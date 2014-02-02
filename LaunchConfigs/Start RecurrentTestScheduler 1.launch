@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/RecurrentTestScheduler/lib/bootstrap-1.0.0.jar"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
+<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/Java SE 7"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.compuware.ruxit.synthetic.bootstrap.Bootstrap"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="start"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="RecurrentTestScheduler"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Dcompuware.application.home=/Users/bfhcpd0/projects/Scheduler/RecurrentTestScheduler -Dcompuware.application.engine=com.compuware.ruxit.synthetic.scheduler.recur.engine.RecurrentTestSchedulingEngine -Dcompuware.application.config=app-context-0.xml -Duser.timezone=GMT -Dlog4j.configuration=log4j-0.properties -Dlog.extra.appenders=,daily_rolling -Dlog.dir=/Users/bfhcpd0/projects/Scheduler/RecurrentTestScheduler/logs/ -Xms2048m -Xmx2048m -XX:NewSize=1024m -XX:MaxNewSize=1024m -XX:PermSize=1024m -XX:MaxPermSize=1024m -XX:+DisableExplicitGC"/>
+</launchConfiguration>
