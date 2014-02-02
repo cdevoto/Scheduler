@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/tx 
+           http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+   <!-- Configures support for @Transactional -->
+    <tx:annotation-driven/>
+    
+    <bean 
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+ 
+		<property name="locations">
+			<list>
+				<value>classpath:scheduler-0.properties</value>
+				<value>classpath:jdbc.properties</value>
+			</list>
+		</property>		
+	</bean>
+    
+    
+
+     <!-- Scans within the base package of the application for @Components to configure as beans -->
+    <context:component-scan base-package="com.compuware.ruxit.synthetic.scheduler.core.config.dao.jdbc" />
+    <context:component-scan base-package="com.compuware.ruxit.synthetic.scheduler.core.dao.jdbc" />
+    <context:component-scan base-package="com.compuware.ruxit.synthetic.scheduler.core.service" />
+    <context:component-scan base-package="com.compuware.ruxit.synthetic.scheduler.recur" />
+    <context:annotation-config/>
+
+    <bean id="schedulerId" class="com.compuware.ruxit.synthetic.scheduler.core.config.dao.model.SchedulerConfig.Id">
+        <constructor-arg value="${scheduler.id}"/>
+    </bean>
+
+    <bean id="terminator" class="com.compuware.ruxit.synthetic.termination.SocketSignalTerminator">
+    </bean>
+    
+     <bean id="terminationSensor" class="com.compuware.ruxit.synthetic.termination.SocketSignalTerminationSensor">
+        <constructor-arg value="${scheduler.termPort}"/>
+    </bean>
+
+    <bean id="testScheduleManager" class="com.compuware.ruxit.synthetic.scheduler.recur.scheduling.TestScheduleManager">
+        <property name="maxRows" value="${scheduler.maxRows}"/>
+        <property name="pollFrequency" value="${scheduler.pollFrequency}"/>
+    </bean>
+
+    <bean id="eventManager" class="com.compuware.ruxit.synthetic.scheduler.recur.scheduling.event.PollingEventManager">
+        <property name="maxRows" value="${scheduler.maxRows}"/>
+    </bean>
+
+    <!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+      <property name="driverClassName" value="${jdbc.driverClassName}"/>
+      <property name="url" value="${jdbc.url}"/>
+      <property name="username"  value="${jdbc.username}"/>
+      <property name="password" value="${jdbc.password}"/>
+      <property name="validationQuery" value="select 1;"/>
+    </bean>
+    
+    
+    <bean id="transactionManager" 
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    
+</beans>

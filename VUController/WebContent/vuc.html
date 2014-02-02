@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RUXIT - VU Controller</title>
+	<meta charset="utf-8">
+    <link rel="shortcut icon" type="image/x-icon" href="/vuc/img/favicon.ico" />
+	<link href="css/vuc.css" media="screen,projection" rel="stylesheet" type="text/css">
+	<link href="css/data-table.css" media="screen,projection" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/vuc/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/vuc/js/purl.js"></script>
+    <script type="text/javascript" src="/vuc/js/jquery-dateFormat.min.js"></script>
+    <script type="text/javascript" src="/vuc/js/vuc.js"></script>
+</head>
+<body class="signup responsive">
+    <section class="fullwidth">
+            <section class="central">
+                <hgroup class="borderLess">
+                    <h1>
+                        <span id="vuc-name">VU Controller</span>
+                        <input type="submit" value="Play" id="play-pause" tabindex="1" class="button hidden">
+                    </h1>
+                    <h2 id="vuc-lcps" class="hidden"></h2>
+                    <h2 id="vuc-supports" class="hidden"></h2>
+                </hgroup>
+                
+                <label id="max-tests-label" for="maxTests">Maximum Number of Tests to Retrieve</label>
+                 <div class="input-group">
+                     <input class="required check-blur" type="text" id="max-tests" name="maxTests" tabindex="2" spellcheck="false" value="1">
+                 </div>
+                
+                <section class="flush-block">
+                    
+                    <input type="checkbox" id="customize-supported" name="customizeSupported" value="1">
+                    <label for="customize-supported" class="inline-label">Customize supported attributes</label>
+	                
+	                <blockquote id="supported-attributes" class="flush-block hidden">
+	                      <input type="checkbox" id="ipv4" name="ipv4" value="1">
+	                      <label for="ipv4" class="inline-label">Supports IPv4</label><br>
+	 
+	                      <input type="checkbox" id="ipv6" name="ipv6" value="2">
+	                      <label for="ipv6" class="inline-label">Supports IPv6</label><br>
+	 
+	                      <input type="checkbox" id="sms" name="sms" value="4">
+	                      <label for="sms" class="inline-label">Supports SMS</label><br>
+	                 </blockquote>
+                 </section>
+                 
+                 <hr/>
+                
+				<table id="test-table" class="data-table" summary="Tests Assigned">
+					<thead>
+						<tr>
+							<th scope="col">retrieved</th>
+							<th scope="col">testId</th>
+							<th scope="col">tenantId</th>
+							<th scope="col">scriptId</th>
+							<th scope="col">scriptLastModified</th>
+							<th scope="col">testDefId</th>
+							<th scope="col">testDefLastModified</th>
+							<th scope="col">priority</th>
+							<th scope="col">requires</th>
+						</tr>
+					</thead>
+					<tbody id="test-table-body">
+					    <tr>
+					        <td colspan="9">No tests have been retrieved</td>
+					    </tr>
+					</tbody>
+				</table>
+
+            </section>
+     </section>
+</body>
+</html>

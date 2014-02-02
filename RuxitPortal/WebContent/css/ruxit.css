@@ -1,0 +1,3623 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 62.5%;
+  line-height: 1.5em;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dd,
+dl,
+dt,
+li,
+ol,
+ul,
+fieldset,
+form,
+label,
+legend,
+button,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 100%;
+  line-height: 1;
+  font-family: inherit;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+}
+ol,
+ul {
+  list-style: none;
+}
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
+  content: "";
+}
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+a:focus {
+  outline: none;
+}
+a:hover,
+a:active {
+  outline: 0;
+}
+p {
+  color: #8e959c;
+}
+a {
+  color: #19a9e5;
+}
+a:hover {
+  color: #1487b7;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+  display: block;
+}
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+audio:not([controls]) {
+  display: none;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle;
+  outline: none;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+button,
+input {
+  border: 1px solid;
+  outline: none;
+  line-height: normal;
+  *overflow: visible;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+textarea {
+  overflow: auto;
+  vertical-align: top;
+}
+::selection {
+  background: #72d0eb;
+  color: #ffffff;
+  text-shadow: none;
+}
+::-moz-selection {
+  background: #72d0eb;
+  color: #ffffff;
+  text-shadow: none;
+}
+.hidden {
+  display: none;
+}
+.hide {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+body.darkgrey {
+  background: #1a232b;
+}
+body.grey {
+  background: #f6f6f8;
+}
+body.midgrey {
+  background: #3b424d;
+}
+.fullwidth {
+  float: left;
+  width: 100%;
+  min-width: 985px;
+  clear: both;
+  position: relative;
+  z-index: 2;
+}
+
+.fullwidth.gray {
+	background-color: #f6f6f8;
+}
+
+.central {
+  margin: 0 auto;
+  width: 985px;
+  clear: both;
+  position: relative;
+  z-index: 2;
+}
+/*  HEADER + NAVIGATION */
+header {
+  float: left;
+  width: 100%;
+  clear: both;
+  margin: 0 0 45px 0;
+  min-width: 985px;
+  border-bottom: 3px solid #5fc5e6;
+  position: relative;
+  margin-bottom: 0;
+}
+header.snug {
+  border: none !important;
+}
+header h1 {
+  font-family: "FS Albert Web Bold", "Helvetica Neue", Arial, sans-serif;
+  font-size-adjust: 0.49;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 4.5em;
+  letter-spacing: -0.03em;
+  line-height: 0.78em;
+  width: 961px;
+  margin: 0 0 0 24px;
+  padding: 40px 0 41px 0;
+  color: #ffffff;
+  text-shadow: 2px 2px #50b8e1;
+  position: relative;
+  z-index: 1;
+}
+ul#global {
+  float: left;
+  width: 100%;
+  text-align: right;
+  padding: 5px 0;
+  position: relative;
+  z-index: 1;
+}
+ul#global li {
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+}
+ul#global li a {
+  float: left;
+  margin: 0 5px;
+  padding: 3px 0 5px 0;
+  font-size: 1.1em;
+  color: #ffffff;
+}
+ul#global li a:hover,
+ul#global li a:focus {
+  color: #0c4352;
+}
+ul#global li a#login {
+  margin-right: 21px;
+}
+ul#global li.highlight a#login {
+  margin-right: 28px;
+  background: #ffffff;
+  color: #ffffff;
+}
+ul#global li.highlight a#login:hover {
+  background: #ffffff;
+}
+ul#global li.active a {
+  background: #ffffff;
+  color: #0c4352;
+}
+ul#global li.active a,
+ul#global li.highlight a {
+  margin: 0;
+  -khtml-border-radius: 9px;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  border-radius: 9px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  padding: 3px 7px 5px 7px;
+}
+ul#primary {
+  float: left;
+  width: 968px;
+  margin: 0 0 0 17px;
+  position: relative;
+}
+ul#primary li {
+  float: left;
+}
+ul#primary li a {
+  float: left;
+  text-transform: uppercase;
+  background-size: 367px 60px!important;
+  height: 65px;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+ul#primary li a#scripts {
+  width: 87px;
+  background-position: -192px -55px;
+}
+ul#primary li a#scripts:hover,
+ul#primary li a#scripts:focus {
+  background-position: -268px -55px;
+}
+ul#primary li a#maint-schedules {
+  width: 192px;
+  background-position: -87px 5px;
+}
+ul#primary li a#maint-schedules:hover,
+ul#primary li a#maint-schedules:focus {
+  background-position: -275px 5px;
+}
+ul#primary li.active a#scripts {
+  background-position: 0px 5px;
+}
+ul#primary li.active a#maint-schedules {
+  background-position: 0px -55px;
+}
+ul#primary li#logo {
+  float: right;
+  margin: 0 21px 0 0;
+}
+ul#primary li#logo a {
+  width: 100px;
+  background-position: -457px 7px;
+  height: 60px;
+  margin: 24px 0 23px 0;
+  /*
+  -webkit-transition: background-position 0.2s linear;
+  -moz-transition: background-position 0.2s linear;
+  -o-transition: background-position 0.2s linear;
+  transition: background-position 0.2s linear;
+  */
+}
+ul#primary li#logo a:hover,
+ul#primary li#logo a:focus {
+  background-position: -457px 7px;
+}
+ul#secondary {
+  float: left;
+  width: 970px;
+  padding: 0 0 18px 15px;
+  margin: 4px 0 0 0;
+}
+ul#secondary li {
+  float: left;
+  margin: 0 3px 0 0;
+}
+ul#secondary li a {
+  float: left;
+  font-size: 1.3em;
+  padding: 5px 10px 6px 10px;
+  margin: 17px 0 0 0;
+  color: #ffffff;
+  -khtml-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  border-radius: 12px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+}
+ul#secondary li a:hover {
+  color: #2f353e;
+}
+ul#secondary li a:active,
+ul#secondary li a:focus {
+  background: #1fafd8;
+  color: #ffffff;
+}
+ul#secondary li.active a {
+  background: #ffffff;
+  color: #2f353e;
+}
+.placeholder {
+  color: #adb3b9 !important;
+}
+/*  THEMES  */
+/*  Blue header */
+header.blue {
+  background: #72d0eb;
+  border-bottom: 3px solid #5fc5e6;
+}
+header.blue h1 {
+  color: #ffffff;
+  text-shadow: 2px 2px #50b8e1;
+}
+header.blue ul#global li a {
+  color: #ffffff;
+}
+header.blue ul#global li a:hover,
+header.blue ul#global li a:focus {
+  color: #0c4352;
+}
+header.blue ul#global li.active a,
+header.blue ul#global li.highlight a#login {
+  background: #ffffff;
+  color: #1fafd8;
+}
+header.blue ul#global li.active a:hover,
+header.blue ul#global li.highlight a#login:hover {
+  color: #2f353e;
+}
+header.blue #gradientLeft {
+  position: absolute;
+  background: url('/img/marketing/global/blue_gradient_left.png') left repeat-y;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 0;
+}
+header.blue #gradientRight {
+  position: absolute;
+  background: url('/img/marketing/global/blue_gradient_right.png') right repeat-y;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 0;
+}
+/*  Dark Blue header */
+header.darkblue {
+  background: #59c1e4;
+  border-bottom: 3px solid #4ab7df;
+}
+header.darkblue h1 {
+  text-shadow: 2px 2px #25a3d1;
+}
+header.darkblue ul#global li.active a,
+header.darkblue ul#global li.highlight a#login {
+  background: #ffffff;
+  color: #1e92b9;
+}
+header.darkblue ul#global li.active a:hover,
+header.darkblue ul#global li.highlight a#login:hover,
+header.darkblue ul#global li.active a:focus,
+header.darkblue ul#global li.highlight a#login:focus {
+  color: #2f353e;
+}
+header.darkblue #gradientLeft {
+  position: absolute;
+  background: url('/img/marketing/global/darkblue_gradient_left.png') left repeat-y;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 0;
+}
+header.darkblue #gradientRight {
+  position: absolute;
+  background: url('/img/marketing/global/darkblue_gradient_right.png') right repeat-y;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 0;
+}
+/*  Grey header */
+header.grey {
+  background: #3b424d;
+  border-bottom: 3px solid #252930;
+}
+header.grey h1 {
+  text-shadow: 2px 2px #252930;
+}
+header.grey ul#global li a {
+  color: #c3cbd3;
+}
+header.grey ul#global li a:hover,
+header.grey ul#global li a:focus {
+  color: #ffffff;
+}
+header.grey ul#global li.active a,
+header.grey ul#global li.highlight a#login {
+  background: #ffffff;
+  color: #3b424d;
+}
+header.grey ul#global li.active a:hover,
+header.grey ul#global li.highlight a#login:hover,
+header.grey ul#global li.active a:focus,
+header.grey ul#global li.highlight a#login:focus {
+  color: #0f1013;
+}
+header.grey #gradientLeft {
+  position: absolute;
+  background: url('/img/marketing/global/grey_gradient_left.png') left repeat-y;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 0;
+}
+header.grey #gradientRight {
+  position: absolute;
+  background: url('/img/marketing/global/grey_gradient_right.png') right repeat-y;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 0;
+}
+/*  Lightgrey header */
+header.lightgrey {
+  background: #e7ebee;
+  border-bottom: none;
+}
+header.lightgrey h1 {
+  text-shadow: 2px 2px #bac5ce;
+}
+header.lightgrey ul#global li a {
+  color: #677487;
+}
+header.lightgrey ul#global li a:hover,
+header.lightgrey ul#global li a:focus {
+  color: #242b33;
+}
+header.lightgrey ul#global li.active a,
+header.lightgrey ul#global li.highlight a#login {
+  background: #ffffff;
+  color: #3b424d;
+}
+header.lightgrey ul#global li.highlight a#login:hover,
+header.lightgrey ul#global li.highlight a#login:focus {
+  color: #0f1013;
+}
+header.lightgrey #gradientLeft {
+  position: absolute;
+  background: url('/img/marketing/global/lightgrey_gradient_left.png') left repeat-y;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 0;
+}
+header.lightgrey #gradientRight {
+  position: absolute;
+  background: url('/img/marketing/global/lightgrey_gradient_right.png') right repeat-y;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 0;
+}
+/*  Darkgrey header */
+header.darkgrey {
+  background: #1a232b;
+  border-bottom: 3px solid #07090b;
+}
+header.darkgrey h1 {
+  text-shadow: 2px 2px #07090b;
+}
+header.darkgrey ul#global li a {
+  color: #c3cbd3;
+}
+header.darkgrey ul#global li a:hover,
+header.darkgrey ul#global li a:focus {
+  color: #ffffff;
+}
+header.darkgrey ul#global li.active a,
+header.darkgrey ul#global li.highlight a#login {
+  background: #5c6778;
+  color: #ffffff;
+}
+header.darkgrey ul#global li.highlight a#login:hover,
+header.darkgrey ul#global li.highlight a#login:focus {
+  color: #ffffff;
+  background: #677487;
+}
+header.darkgrey #gradientLeft {
+  position: absolute;
+  background: url('/img/marketing/global/darkgrey_gradient_left.png') left repeat-y;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 0;
+}
+header.darkgrey #gradientRight {
+  position: absolute;
+  background: url('/img/marketing/global/darkgrey_gradient_right.png') right repeat-y;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 0;
+}
+/*  Green header */
+header.green {
+  background: #b9dc2f;
+  border-bottom: 3px solid #accf23;
+}
+header.green h1 {
+  text-shadow: 2px 2px #a1c221;
+}
+header.green ul#global li a {
+  color: #fefffc;
+}
+header.green ul#global li a:hover,
+header.green ul#global li a:focus {
+  color: #ffffff;
+}
+header.green ul#global li.active a,
+header.green ul#global li.highlight a#login {
+  background: #8bc72c;
+  color: #ffffff;
+}
+header.green ul#global li.highlight a#login:hover,
+header.green ul#global li.highlight a#login:focus {
+  color: #ffffff;
+  background: #57ad17;
+}
+header.green #gradientLeft {
+  position: absolute;
+  background: url('/img/marketing/global/green_gradient_left.png') left repeat-y;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 0;
+}
+header.green #gradientRight {
+  position: absolute;
+  background: url('/img/marketing/global/green_gradient_right.png') right repeat-y;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 0;
+}
+header.darkgreen {
+  background: #7ebd26;
+  border-bottom: 3px solid #70a822;
+}
+header.darkgreen h1 {
+  text-shadow: 2px 2px #679b1f;
+}
+header.darkgreen ul#global li a {
+  color: #d6eb86;
+}
+header.darkgreen ul#global li a:hover,
+header.darkgreen ul#global li a:focus {
+  color: #ffffff;
+}
+header.darkgreen ul#global li.active a,
+header.darkgreen ul#global li.highlight a#login {
+  background: #ffffff;
+  color: #7ebd26;
+}
+header.darkgreen ul#global li.highlight a#login:hover,
+header.darkgreen ul#global li.highlight a#login:focus {
+  color: #ffffff;
+  background: #679b1f;
+}
+header.darkgreen #gradientLeft {
+  position: absolute;
+  background: url('/img/marketing/global/darkgreen_gradient_left.png') left repeat-y;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 0;
+}
+header.darkgreen #gradientRight {
+  position: absolute;
+  background: url('/img/marketing/global/darkgreen_gradient_right.png') right repeat-y;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 0;
+}
+/*  Yellow header */
+header.yellow {
+  background: #ffd617;
+  border-bottom: 3px solid #ffc70e;
+}
+header.yellow h1 {
+  text-shadow: 2px 2px #f9bf00;
+}
+header.yellow ul#global li a {
+  color: #f69100;
+}
+header.yellow ul#global li a:hover,
+header.yellow ul#global li a:focus {
+  color: #aa6400;
+}
+header.yellow ul#global li.active a,
+header.yellow ul#global li.highlight a#login {
+  background: #ffffff;
+  color: #f69100;
+}
+header.yellow ul#global li.highlight a#login:hover,
+header.yellow ul#global li.highlight a#login:focus {
+  color: #ffffff;
+  background: #f69100;
+}
+header.yellow #gradientLeft {
+  position: absolute;
+  background: url('/img/marketing/global/yellow_gradient_left.png') left repeat-y;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 0;
+}
+header.yellow #gradientRight {
+  position: absolute;
+  background: url('/img/marketing/global/yellow_gradient_right.png') right repeat-y;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 0;
+}
+/*  Dark primary nav */
+.dark {
+  background: #2f353e;
+}
+.dark ul#primary {
+  background: #2f353e;
+  border: none;
+}
+.dark ul#primary li a {
+  background: url('/ruxit/img/navigation.gif') top left no-repeat;
+  background-size: 557px 120px !important;
+  height: 65px;
+}
+.dark ul#primary li#logo a {
+  margin: 0;
+}
+.dark ul#primary.tan li.active {
+  background: url('/ruxit/img/mask.gif') center no-repeat #e4ddd1;
+  background-size: 300px 65px;
+}
+.dark ul#primary.blue li.active {
+  background: url('/ruxit/img/mask.gif') center no-repeat #72d0eb;
+  background-size: 300px 65px;
+}
+/*  Tan secondary nav */
+#secondaryNav.tan,
+.fullwidth.tan {
+  background: #ede8df;
+  border-top: 4px solid #e4ddd1;
+}
+#secondaryNav.tan ul#secondary,
+.fullwidth.tan ul#secondary {
+  margin: 0;
+}
+#secondaryNav.tan ul#secondary li a,
+.fullwidth.tan ul#secondary li a {
+  color: #aea595;
+}
+#secondaryNav.tan ul#secondary li a:hover,
+.fullwidth.tan ul#secondary li a:hover {
+  color: #60584a;
+}
+#secondaryNav.tan ul#secondary li a:active,
+.fullwidth.tan ul#secondary li a:active,
+#secondaryNav.tan ul#secondary li a:focus,
+.fullwidth.tan ul#secondary li a:focus {
+  color: #544f45;
+  background: #ded6c7;
+}
+#secondaryNav.tan ul#secondary li.active a,
+.fullwidth.tan ul#secondary li.active a {
+  background: #ffffff;
+  color: #544f45;
+}
+#secondaryNav.tan ul#secondary li.active a:hover,
+.fullwidth.tan ul#secondary li.active a:hover,
+#secondaryNav.tan ul#secondary li.active a:focus,
+.fullwidth.tan ul#secondary li.active a:focus {
+  color: #000000;
+}
+/*  Blue secondary nav */
+#secondaryNav.blue,
+.fullwidth.blue {
+  background: #72d0eb;
+  border-top: 4px solid #72d0eb;
+}
+#secondaryNav.blue ul#secondary,
+.fullwidth.blue ul#secondary {
+  margin: 0;
+}
+#secondaryNav.blue ul#secondary li a,
+.fullwidth.blue ul#secondary li a {
+  color: #ffffff;
+}
+#secondaryNav.blue ul#secondary li a:hover,
+.fullwidth.blue ul#secondary li a:hover {
+  color: #135e77;
+}
+#secondaryNav.blue ul#secondary li a:active,
+.fullwidth.blue ul#secondary li a:active,
+#secondaryNav.blue ul#secondary li a:focus,
+.fullwidth.blue ul#secondary li a:focus {
+  color: #ffffff;
+  background: #1fafd8;
+}
+#secondaryNav.blue ul#secondary li.active a,
+.fullwidth.blue ul#secondary li.active a {
+  background: #ffffff;
+  color: #2f353e;
+}
+#secondaryNav.blue ul#secondary li.active a:hover,
+.fullwidth.blue ul#secondary li.active a:hover,
+#secondaryNav.blue ul#secondary li.active a:focus,
+.fullwidth.blue ul#secondary li.active a:focus {
+  color: #000000;
+}
+/*  Edge-cases */
+.dark ul#primary.white li.active {
+  background: url('/img/marketing/global/mask.gif') center no-repeat #ffffff;
+  background-size: 300px 65px;
+}
+body.forums header ul#secondary {
+  width: 500px;
+}
+body.forums header ul#forumLinks {
+  float: right;
+  text-align: right;
+  width: 400px;
+  margin: 0 12px 0 0;
+  padding: 0;
+}
+body.forums header ul#forumLinks li {
+  display: inline-block;
+  margin: 0 3px 0 0;
+}
+body.forums header ul#forumLinks li a {
+  float: left;
+  font-size: 1.3em;
+  padding: 5px 10px 6px 10px;
+  margin: 17px 0 0 0;
+  color: #aea595;
+  -khtml-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  border-radius: 12px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+}
+body.forums header ul#forumLinks li a:hover {
+  color: #60584a;
+}
+body.forums header ul#forumLinks li a:active,
+body.forums header ul#forumLinks li a:focus {
+  color: #544f45;
+  background: #ded6c7;
+}
+body.forums header ul#forumLinks li.active a {
+  background: #ffffff;
+  color: #544f45;
+}
+body.forums header ul#forumLinks li.active a:hover,
+body.forums header ul#forumLinks li.active a:focus {
+  color: #000000;
+}
+/*  FOOTER + SIGNUP BAR */
+section.signupbar {
+  background: url('/img/marketing/global/texture.png') repeat #2f353e;
+  border-top: 5px solid #242b33;
+  padding: 50px 0 55px 0;
+  margin: 55px 0 0 0;
+}
+section.signupbar .central {
+  width: 560px;
+  color: #ffffff;
+}
+section.signupbar p {
+  float: left;
+  font-family: "FS Albert Web Light", "Helvetica Neue", Arial, sans-serif;
+  font-size-adjust: 0.48;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 1.7em;
+  letter-spacing: 0.03em;
+  line-height: 1em;
+  color: #d8dee3;
+}
+section.signupbar p strong {
+  font-family: "FS Albert Web Light", "Helvetica Neue", Arial, sans-serif;
+  font-size-adjust: 0.48;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 1.1em;
+  letter-spacing: 0.03em;
+  line-height: 1.2em;
+  font-weight: normal;
+  color: #ffffff;
+}
+section.signupbar a#create {
+  float: right;
+  font-family: "Open Sans", Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 1.3em;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  line-height: 1.5em;
+  color: #ffffff;
+  padding: 10px 20px;
+  margin: 2px 0 0 0;
+  -khtml-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  background: url('/img/marketing/global/button_back.png') top left repeat-x #b9dc2f;
+  text-shadow: 1px 1px #679b1f;
+}
+section.signupbar a#create:hover {
+  background-position: -300px 0;
+}
+section.signupbar a#create:active {
+  background-position: top right;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+.darkgrey .signupbar {
+  border-top: none;
+}
+footer {
+  float: left;
+  width: 100%;
+  min-width: 985px;
+  position: relative;
+  color: #c3cbd3;
+  background: #f2f2f3;
+  padding: 0 0 60px 0;
+}
+footer.spacer {
+  margin: 110px 0 0 0;
+}
+footer .central.marque {
+  text-align: center;
+  padding: 41px 0 48px 0;
+}
+footer .central.marque a {
+  -webkit-transition: background-position 0.2s linear;
+  -moz-transition: background-position 0.2s linear;
+  -o-transition: background-position 0.2s linear;
+  transition: background-position 0.2s linear;
+  background: url('/img/marketing/global/footer.png') top left no-repeat;
+  background-size: 36px 261px;
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  width: 36px;
+  height: 24px;
+  overflow: hidden;
+  font-size: 0;
+  line-height: 0;
+}
+footer .central.marque a:hover {
+  background-position: 0 -34px;
+}
+footer dl {
+  float: left;
+  width: 12.5%;
+  margin: 0 0 0 2.5%;
+}
+footer dl dd {
+  font-size: 1.2em;
+  padding: 0 0 8px 0;
+}
+footer dl dt,
+footer #subForm h6 {
+  font-family: "Open Sans", Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 1.2em;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  line-height: 1.5em;
+  width: 100%;
+  border-bottom: 1px solid #e6e6e8;
+  padding: 0 0 5px 0;
+  margin: 0 0 25px 0;
+  color: #2f353e;
+}
+footer dl dd a,
+footer section p a {
+  color: #8e959c;
+}
+footer dl dd a:hover,
+footer section p a:hover {
+  color: #2f353e;
+}
+footer #subForm,
+footer section #social {
+  float: right;
+  width: 32.5%;
+  margin: 0 2.5% 0 0;
+  color: #8e959c;
+}
+footer #subForm p {
+  font-size: 1.2em;
+}
+footer #subForm p a {
+  color: #19a9e5;
+}
+footer #subForm p a:hover {
+  color: #1487b7;
+}
+footer #subForm p a:active {
+  color: #0f6589;
+}
+footer #subForm p input {
+  float: left;
+  width: 81%;
+  margin: 8px 0 0 0;
+  border-color: #c3cbd3;
+  -khtml-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1em;
+  padding: 8px 3% 8px 3%;
+  color: #2f353e;
+}
+footer #subForm p input::-webkit-input-placeholder {
+  color: #adb3b9;
+}
+footer #subForm p input:-moz-placeholder {
+  color: #adb3b9;
+}
+footer #subForm p input:focus {
+  border-color: #8e959c;
+}
+footer #subForm #subResponse {
+  font-size: 1.2em;
+}
+footer section {
+  padding: 40px 0 0 0;
+}
+footer section p {
+  float: left;
+  margin: 0 0 0 25px;
+  width: 45%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.2em;
+  line-height: 1.5em;
+}
+footer section p a {
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  padding: 5px 0;
+}
+footer section p a span {
+  color: #c3cbd3;
+}
+footer section p a.esp {
+  padding-left: 19px;
+  background: url('/img/marketing/global/footer.png') left center no-repeat;
+  background-position: 0 -105px;
+  background-size: 36px 261px;
+}
+footer section #social a,
+footer section a.followus {
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  background: #72d0eb;
+  color: #ffffff;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.1em;
+  line-height: 1.5em;
+  padding: 7px 13px 7px 28px;
+  -khtml-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+footer section #social a:hover,
+footer section a.followus:hover,
+footer section .sidebar a.buy:hover {
+  background-color: #2fbae1;
+}
+footer section #social a:active,
+footer section a.followus:active,
+footer section .sidebar a.buy:active {
+  background-color: #1c9dc2;
+}
+footer section #social a.twitter,
+footer section a.followus {
+  background-image: url('/img/marketing/global/twitter.png');
+  background-size: 23px 12px;
+}
+footer section #social a.facebook {
+  background-image: url('/img/marketing/global/facebook.png');
+  background-size: 19px 16px;
+}
+footer #diagonalLeft {
+  position: absolute;
+  background: url('/img/marketing/global/foot_left.png') bottom right no-repeat;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.7;
+}
+footer #diagonalRight {
+  position: absolute;
+  background: url('/img/marketing/global/foot_right.png') bottom left no-repeat;
+  top: 0;
+  right: 0;
+  width: 70%;
+  height: 100%;
+  z-index: 0;
+}
+footer#transparent {
+  background: none;
+}
+footer#transparent #diagonalLeft,
+footer#transparent #diagonalRight {
+  display: none;
+}
+footer#slim {
+  background: none;
+  width: 950px;
+  min-width: 100px;
+  margin: 100px auto;
+  float: none;
+  clear: both;
+  border-top: 1px solid #e0e5e9;
+}
+footer#slim ul {
+  float: left;
+  width: 800px;
+  margin: 40px 75px 60px 75px;
+}
+footer#slim ul li {
+  float: left;
+  margin: 0 20px 0 0;
+}
+footer#slim ul li#logo a {
+  float: left;
+  margin: 1px 0 0 0;
+  width: 14px;
+  height: 10px;
+  background: url('/img/marketing/global/footer.png') top left no-repeat;
+  background-size: 36px 261px;
+  background-position: 0 -231px;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-transition: background-position 0.2s linear;
+  -moz-transition: background-position 0.2s linear;
+  -o-transition: background-position 0.2s linear;
+  transition: background-position 0.2s linear;
+}
+footer#slim ul li#logo a:hover {
+  background-position: 0 -251px;
+}
+footer#slim ul li a {
+  font-size: 1.2em;
+  color: #8e959c;
+}
+footer#slim ul li a:hover {
+  color: #2f353e;
+}
+section.textonly {
+  width: 500px;
+}
+.body-2col {
+  float: left;
+  width: 69%;
+  margin: 0 0 0 2.5%;
+}
+.sidebar {
+  float: right;
+  width: 258px;
+  margin: 3px 2px 0 0;
+}
+.sidebar.extraspace {
+  margin: 28px 2px 0 0;
+}
+.sidebar .module {
+  float: right;
+  width: 240px;
+  background: #f8f8f9;
+  padding: 3px;
+  -khtml-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  position: relative;
+  z-index: 4;
+  margin: 0 0 35px 0;
+}
+.sidebar .module.twitter {
+  background: none;
+}
+.sidebar .module.twitter .inner {
+  position: relative;
+  background: #f8fdfe;
+  -khtml-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  border-color: #bee1f3;
+  color: #8e959c;
+  padding: 25px 19px 30px 19px;
+  width: 200px;
+  margin-bottom: 15px;
+}
+.sidebar .module.twitter .inner .tip {
+  position: absolute;
+  width: 13px;
+  height: 7px;
+  background: url('/assets/images/blog/twitter_tip.gif') center no-repeat;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  bottom: -7px;
+}
+.sidebar .module .inner {
+  float: left;
+  background: #ffffff;
+  width: 238px;
+  -khtml-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  padding: 25px 0 30px 0;
+  border: 1px solid #e0e5e9;
+}
+.sidebar .module .inner.download {
+  padding-bottom: 0;
+}
+.sidebar .module .inner .downloadLink {
+  float: left;
+  width: 200px;
+  margin: 20px 2px 2px 2px;
+  background: #f8f8f9;
+  padding: 15px 17px;
+}
+.sidebar .module .inner .downloadLink a {
+  float: left;
+  z-index: 100;
+  width: 198px;
+  text-align: center;
+  padding: 11px 0;
+  color: #ffffff;
+  -khtml-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.4em;
+  border: 1px solid #679b1f;
+  background: url('/img/marketing/global/button_back.png') top left repeat-x #7ebd26;
+  text-shadow: 1px 1px #56821a;
+}
+.sidebar .module .inner .downloadLink a:hover,
+.sidebar .module .inner .downloadLink a:focus {
+  background-position: -300px 0;
+}
+.sidebar .module .inner .downloadLink a:active {
+  background-position: top right;
+  text-shadow: 0 -1px #456815;
+  border-top-color: #547d19;
+}
+.sidebar .module .socialtools {
+  float: left;
+  width: 218px;
+  padding: 20px 0 20px 20px;
+  margin: 25px 0 -25px 0;
+  border-top: 1px solid #e0e5e9;
+  background: #f6f6f8;
+}
+.sidebar .module .socialtools iframe {
+  float: left;
+  margin: 0 5px 0 0;
+}
+.sidebar .module .twitter-share-button {
+  float: left;
+  margin: 20px 0 0 20px;
+}
+.sidebar nav {
+  float: right;
+  width: 242px;
+  margin: 0 0 25px 0;
+}
+.sidebar nav ol {
+  width: 242px;
+  padding: 0;
+  margin: 25px 0 0 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.2em;
+  line-height: 1.5em;
+}
+.sidebar nav ol li {
+  float: left;
+  margin: 0 0 5px 0;
+}
+.sidebar nav ol li a {
+  float: left;
+  width: 202px;
+  color: #8e959c;
+  margin: 0 0 10px 0;
+  padding: 0 20px;
+  line-height: 1.4em;
+}
+.sidebar nav ol li a:hover {
+  color: #2f353e;
+}
+.sidebar nav ol li.active a,
+.sidebar nav ol li.current a {
+  background: url('/assets/images/blog/arrow_left_blue.gif') left center no-repeat;
+  color: #19a9e5;
+}
+.sidebar nav ol li.active a:hover,
+.sidebar nav ol li.current a:hover {
+  color: #1487b7;
+}
+.sidebar form {
+  float: left;
+  width: 100%;
+  background: #f8f8f9;
+  border-bottom: 1px solid #e0e5e9;
+  border-top: 1px solid #e0e5e9;
+  padding: 10px 0;
+  margin: 25px 0;
+}
+.sidebar form label {
+  float: left;
+  width: 224px;
+  background: #ffffff;
+  margin: 0 6px;
+  padding: 0;
+  border: 1px solid #e0e5e9;
+  -khtml-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  position: relative;
+}
+.sidebar form label input.inputbox {
+  border: none;
+  padding: 10px 90px 10px 13px;
+  color: #2f353e;
+  margin: 0;
+  width: 121px;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.3em;
+  line-height: auto;
+}
+.sidebar form label input#subscribebutton {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  color: #ffffff;
+  padding: 6px 9px;
+  margin: 0;
+  -khtml-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  font-size: 1.2em;
+  border: 1px solid #679b1f;
+  background: url('/img/marketing/global/button_back.png') top left repeat-x #b9dc2f;
+  text-shadow: 1px 1px #679b1f;
+}
+.sidebar form label input#subscribebutton:hover,
+.sidebar form label input#subscribebutton:focus {
+  background-position: -300px 0;
+}
+.sidebar form label input#subscribebutton:active {
+  background-position: top right;
+  text-shadow: none;
+  padding-top: 7px;
+  padding-bottom: 5px;
+}
+.sidebar h6 {
+  margin: 0 0 12px 0;
+  padding: 0 19px;
+  font-family: "Open Sans", Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 1.3em;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  line-height: 1.5em;
+  color: #2f353e;
+}
+.sidebar h6.download,
+.sidebar h6.subscribed {
+  float: left;
+  width: 200px;
+  clear: both;
+  border-top: 1px solid #e0e5e9;
+  padding: 25px 19px 6px 19px;
+  margin: 25px 0 6px 0;
+  color: #7ebd26;
+  position: relative;
+}
+.sidebar h6.download.noborder,
+.sidebar h6.subscribed.noborder {
+  border: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+.sidebar h6.download a,
+.sidebar h6.subscribed a {
+  color: #7ebd26;
+}
+.sidebar h6.download a:hover,
+.sidebar h6.subscribed a:hover {
+  color: #62931d;
+}
+.sidebar h6 a {
+  color: inherit;
+}
+.sidebar h6 a span {
+  color: #19a9e5;
+  font-family: Georgia;
+  font-weight: normal;
+  font-size: 1.2em;
+}
+.sidebar h6 a:hover {
+  color: #19a9e5;
+}
+.sidebar h6.download .glyph {
+  position: absolute;
+  left: -16px;
+  bottom: 0;
+  width: 30px;
+  height: 32px;
+  background: url('/assets/images/blog/down_arrow.png');
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-transform: translate(0, 3px);
+  -moz-transform: translate(0, 3px);
+  -o-transform: translate(0, 3px);
+  -ms-transform: translate(0, 3px);
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  bottom: 0px;
+}
+.sidebar h6.download a:hover .glyph {
+  -webkit-transform: translate(0, 3px);
+  -moz-transform: translate(0, 3px);
+  -o-transform: translate(0, 3px);
+  -ms-transform: translate(0, 3px);
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  bottom: -3px;
+}
+.sidebar h6.subscribed .glyph {
+  position: absolute;
+  left: -16px;
+  bottom: 0;
+  width: 30px;
+  height: 32px;
+  background: url('/assets/images/blog/sidebar_tick.png');
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.sidebar h6.bordertop {
+  float: left;
+  width: 202px;
+  border-top: 1px solid #e0e5e9;
+  padding: 25px 19px 0 19px;
+  margin: 25px 0 12px 0;
+}
+.sidebar p {
+  margin: 0 19px;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.15em;
+  line-height: 1.6em;
+  color: #8e959c;
+}
+.sidebar .twitter p {
+  margin: 0;
+  font-size: 1.4em;
+}
+.sidebar .twitter p small {
+  float: left;
+  width: 100%;
+  font-size: 0.9em;
+  margin: 20px 0 0 0;
+  color: #a9afb4;
+}
+.sidebar .twitter p small a {
+  color: #8e959c;
+}
+.sidebar .twitter p small a:hover {
+  color: #2f353e;
+}
+.sidebar .rss,
+.sidebar .email {
+  float: left;
+  width: 90%;
+  background: url('/assets/images/blog/rss_icon.gif') left center no-repeat;
+  padding: 0 0 0 22px;
+}
+.sidebar .email {
+  background: url('/assets/images/blog/email_icon.gif') left center no-repeat;
+}
+.sidebar .buy {
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  background: #72d0eb;
+  color: #ffffff;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.1em;
+  line-height: 1.5em;
+  padding: 7px 13px 7px 28px;
+  margin: 10px 0 0 20px;
+  -khtml-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  background-image: url('/img/marketing/global/cart.gif');
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+ul#crosslinks {
+  float: left;
+  width: 900px;
+  margin: 50px 0 0 4px;
+  background: #f8fdfe;
+  border: 1px solid #bee1f3;
+  -khtml-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  padding: 28px 0 35px 74px;
+}
+ul#crosslinks li {
+  float: left;
+  width: 377px;
+  min-height: 78px;
+  padding: 0;
+}
+ul#crosslinks li.pocket a {
+  background-position: 0 -5px;
+}
+ul#crosslinks li.pencil a {
+  background-position: 0 -173px;
+}
+ul#crosslinks li.pizza a {
+  background-position: 0 -351px;
+}
+ul#crosslinks li.templates a {
+  background-position: 0 -529px;
+}
+ul#crosslinks li.guide a {
+  background-position: 0 -707px;
+}
+ul#crosslinks li.question a {
+  background-position: 0 -885px;
+}
+ul#crosslinks li.logo a {
+  background-position: 0 -1063px;
+}
+ul#crosslinks li.tag a {
+  background-position: 0 -1241px;
+}
+ul#crosslinks li.chart a {
+  background-position: 0 -1419px;
+}
+ul#crosslinks li.ruler a {
+  background-position: 0 -1597px;
+}
+ul#crosslinks li.terminal a {
+  background-position: 0 -1775px;
+}
+ul#crosslinks li.folder a {
+  background-position: 0 -1953px;
+}
+ul#crosslinks li.forums a {
+  background-position: 0 -2131px;
+}
+ul#crosslinks li.robot a {
+  background-position: 0 -2309px;
+}
+ul#crosslinks li.floppy a {
+  background-position: 0 -2487px;
+}
+ul#crosslinks li.lips a {
+  background-position: 0 -2665px;
+}
+ul#crosslinks li.badge a {
+  background-position: 0 -2843px;
+}
+ul#crosslinks li.speedo a {
+  background-position: 0 -3021px;
+}
+ul#crosslinks li.gold a {
+  background-position: 0 -3199px;
+}
+ul#crosslinks li.book a {
+  background-position: 0 -3377px;
+}
+ul#crosslinks li.email a {
+  background-position: 0 -3555px;
+}
+ul#crosslinks li.right {
+  float: right;
+  margin: 0 74px 0 0;
+}
+ul#crosslinks li a {
+  float: left;
+  padding: 0 0 0 78px;
+  background: url('/img/marketing/global/crosslinks.gif') left top no-repeat;
+  background-position: 0 -1068px;
+  background-size: 78px 3638px;
+}
+ul#crosslinks li h5 {
+  display: block;
+  width: 100%;
+  margin: 0 0 6px 0;
+  font-family: "Open Sans", Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 1.3em;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  line-height: 1.5em;
+}
+ul#crosslinks li p {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.3em;
+  line-height: 1.5em;
+  color: #8e959c;
+}
+a.followus {
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  background: #72d0eb;
+  color: #ffffff;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.1em;
+  line-height: 1.5em;
+  padding: 7px 13px 7px 28px;
+  -khtml-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+a.followus:hover,
+.sidebar a.buy:hover {
+  background-color: #2fbae1;
+}
+a.followus:active,
+.sidebar a.buy:active {
+  background-color: #1c9dc2;
+}
+a.followus {
+  background-image: url('/img/marketing/global/twitter.png');
+}
+/*  Tooltips */
+.tooltip {
+  position: absolute;
+  z-index: 999;
+  display: block;
+  visibility: visible;
+  padding: 5px;
+  font-size: 1.3em;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.tooltip.in {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.tooltip .tooltip-inner {
+  max-width: 200px;
+  padding: 5px 10px;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  background-color: #2f353e;
+  -khtml-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+}
+.tooltip .tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.tooltip.top {
+  margin: 0;
+}
+.tooltip.top .tooltip-arrow {
+  bottom: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #2f353e;
+}
+.tooltip.bottom {
+  margin: 0;
+}
+.tooltip.bottom .tooltip-arrow {
+  top: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #2f353e;
+}
+.tooltip.bottom .tooltip-inner {
+  padding: 8px 10px 7px 10px;
+}
+.tooltip.right {
+  margin: 0px;
+}
+.tooltip.right .tooltip-arrow {
+  top: 50%;
+  left: 0;
+  margin-top: -5px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid #000000;
+}
+.tooltip.right .tooltip-inner {
+  padding: 8px 15px 7px 13px;
+}
+.tooltip.left {
+  margin: 0 0 0 -10px;
+}
+.tooltip.left .tooltip-arrow {
+  top: 50%;
+  right: 0;
+  margin-top: -5px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid #000000;
+}
+.tooltip.left .tooltip-inner {
+  padding: 8px 15px 7px 13px;
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url('//themes.googleusercontent.com/static/fonts/opensans/v6/MTP_ySUJH_bn48VBG8sNSqRDOzjiPcYnFooOUGCOsRk.woff') format('woff');
+}
+@font-face {
+  font-family: 'Droid Sans Mono';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Droid Sans Mono'), local('DroidSansMono'), url('//themes.googleusercontent.com/static/fonts/droidsansmono/v4/ns-m2xQYezAtqh7ai59hJaH0X__W3S3MJL29bc5CWfs.woff') format('woff');
+}
+hgroup {
+  float: left;
+  width: 95%;
+  margin: 0 2.5% 0 2.5%;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid #e6e6e8;
+  position: relative;
+}
+hgroup.borderLess {
+  border-bottom: none;
+}
+hgroup.margin {
+  margin-bottom: 50px;
+}
+hgroup h1 {
+  float: left;
+  font-family: "FS Albert Web Bold", "Helvetica Neue", Arial, sans-serif;
+  font-size-adjust: 0.49;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 4.5em;
+  letter-spacing: -0.03em;
+  line-height: 0.78em;
+  color: #2f353e;
+  width: 100%;
+  margin: 4px 0 25px -4px;
+}
+hgroup h1.singleline {
+  margin-bottom: 0;
+}
+hgroup h2 {
+  width: 600px;
+  font-size: 1.5em;
+  line-height: 1.4em;
+  color: #adb3b9;
+}
+hgroup a.bigbutton {
+  position: absolute;
+  right: 0;
+  bottom: 25px;
+  -khtml-border-radius: 14px;
+  -moz-border-radius: 14px;
+  -webkit-border-radius: 14px;
+  border-radius: 14px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  background: url('/img/marketing/global/arrow_right_white.gif') right center no-repeat #7ebd26;
+  color: #ffffff;
+  font-weight: 500;
+  padding: 8px 25px 9px 13px;
+  font-size: 1.2em;
+  background-position: 90% center;
+}
+hgroup a.bigbutton:hover {
+  background-color: #57ad17;
+}
+hgroup a.bigbutton:active {
+  background-color: #4c9614;
+}
+hgroup a.bigbutton.blue {
+  background-color: #19a9e5;
+}
+hgroup a.bigbutton.blue:hover {
+  background-color: #1487b7;
+}
+hgroup a.bigbutton.blue:active {
+  background-color: #1176a0;
+}
+hgroup.oneline {
+  margin-bottom: 5px;
+}
+hgroup.oneline h1 {
+  margin-bottom: 7px;
+}
+hgroup.oneline .bigbutton {
+  bottom: 27px;
+}
+hgroup.contentonly {
+  width: 680px;
+  margin: 0 0 0 152px;
+}
+#smallheader {
+  float: left;
+  width: 95%;
+  margin: 0 2.5% 0 2.5%;
+  padding: 0;
+}
+#smallheader.margin {
+  padding: 0 0 60px 0;
+}
+#smallheader .inner {
+  float: left;
+  width: 100%;
+  margin: 0;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e6e6e8;
+  position: relative;
+}
+#smallheader .inner.borderLess {
+  border: none;
+}
+#smallheader .inner h1 {
+  float: left;
+  font-family: "FS Albert Web Bold", "Helvetica Neue", Arial, sans-serif;
+  font-size-adjust: 0.49;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 4.5em;
+  letter-spacing: -0.03em;
+  line-height: 0.78em;
+  color: #2f353e;
+  width: 100%;
+  margin: 4px 0 0 -4px;
+}
+#smallheader .inner h2 {
+  float: left;
+  margin-top: 25px;
+  width: 600px;
+  font-size: 1.5em;
+  line-height: 1.4em;
+  color: #adb3b9;
+}
+#smallheader .inner a.bigbutton {
+  position: absolute;
+  right: 0;
+  bottom: 20px;
+  -khtml-border-radius: 14px;
+  -moz-border-radius: 14px;
+  -webkit-border-radius: 14px;
+  border-radius: 14px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  background: url('/img/marketing/global/arrow_right_white.gif') right center no-repeat #7ebd26;
+  color: #ffffff;
+  font-weight: 500;
+  padding: 8px 25px 9px 13px;
+  font-size: 1.2em;
+  background-position: 90% center;
+}
+#smallheader .inner a.bigbutton:hover {
+  background-color: #57ad17;
+}
+#smallheader .inner a.bigbutton:active {
+  background-color: #4c9614;
+}
+#smallheader .inner a.bigbutton.blue {
+  background-color: #19a9e5;
+}
+#smallheader .inner a.bigbutton.blue:hover {
+  background-color: #1487b7;
+}
+#smallheader .inner a.bigbutton.blue:active {
+  background-color: #1176a0;
+}
+#smallheader .inner a.bigbutton.higher {
+  bottom: 25px;
+}
+.central.slim {
+  width: 830px;
+}
+.central.slim #smallheader {
+  width: 100%;
+  margin: 0;
+}
+.central.slim #smallheader .inner h2 {
+  width: 530px;
+}
+body.darkgrey hgroup {
+  border-bottom-color: #3b424d;
+}
+body.darkgrey hgroup h1 {
+  color: #ffffff;
+}
+section#textonly {
+  width: 800px;
+}
+section#textonly h1 {
+  font-family: "FS Albert Web Bold", "Helvetica Neue", Arial, sans-serif;
+  font-size-adjust: 0.49;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 4em;
+  letter-spacing: -0.03em;
+  line-height: 0.78em;
+  color: #2f353e;
+  margin-left: -2px;
+}
+section#textonly h5 {
+  margin-bottom: 10px;
+}
+section#textonly .container {
+  float: left;
+  width: 100%;
+  padding: 50px 0;
+}
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+  width: 92.5%;
+  padding: 0 0 0 7.5%;
+  margin: 0 0 35px 0;
+  clear: both;
+}
+.content h1.wrap,
+.content h2.wrap,
+.content h3.wrap,
+.content h4.wrap,
+.content h5.wrap,
+.content h6.wrap {
+  width: auto;
+  clear: none;
+}
+.content h1,
+.content h2 {
+  display: inline-block;
+  *display: inline;
+  margin-top: 20px;
+  font-family: "FS Albert Web Light", "Helvetica Neue", Arial, sans-serif;
+  font-size-adjust: 0.48;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 2.05em;
+  letter-spacing: 0.03em;
+  line-height: 1.5em;
+  color: #7ebd26;
+}
+.content h3 {
+  display: inline-block;
+  *display: inline;
+  margin: 20px 0 20px;
+  font-family: "FS Albert Web Light", "Helvetica Neue", Arial, sans-serif;
+  font-size-adjust: 0.48;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 2.05em;
+  letter-spacing: 0.03em;
+  line-height: 1.5em;
+  color: #2f353e;
+}
+.content h3.interview {
+  float: left;
+  width: 96%;
+  color: #19a9e5;
+  font-family: "FS Albert Web Light Italic", "Helvetica Neue", Arial, sans-serif;
+  font-size-adjust: 0.48;
+  font-weight: 200;
+  font-style: italic;
+  font-size: 2em;
+  letter-spacing: 0.03em;
+  line-height: 1.2em;
+  margin: 45px 0 35px 0;
+  border-top: 1px solid #e0e5e9;
+  border-bottom: 1px solid #e0e5e9;
+  padding: 25px 0 25px 4%;
+  background: url('/assets/images/customers/bluedot.gif') left center no-repeat;
+}
+.content h3 small {
+  font-size: 0.8em;
+}
+.content h3 a.anchor {
+  float: right;
+  width: 30px;
+  overflow: hidden;
+  background: url('/img/marketing/global/permalink.png') left center no-repeat;
+  height: 30px;
+  text-indent: 9000px;
+  margin: 0 7.5% 0 0;
+}
+.content h3 a.anchor:hover {
+  background-position: -30px center;
+}
+.content h3 a.anchor:active {
+  background-position: -60px center;
+}
+.content h4 {
+  float: left;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-weight: bold;
+  color: #2f353e;
+  font-size: 1.45em;
+  margin: 20px 0 20px 0;
+}
+.content h4 a {
+  font-weight: inherit;
+}
+.content h5 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-weight: bold;
+  color: #2f353e;
+  font-size: 1.35em;
+}
+.content h5.little {
+  font-family: "Open Sans", Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 1.3em;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  line-height: 1.5em;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+.content h6 {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.3em;
+  line-height: 1.5em;
+  font-weight: bold;
+  color: #2f353e;
+}
+.content hr {
+  float: left;
+  width: 85%;
+  border: none;
+  border-top: 1px solid #e0e5e9;
+  height: 0;
+  margin: 20px 7.5% 20px 7.5%;
+}
+.content hr.sectionbreak {
+  border: none;
+  background: url('/img/marketing/global/sectionbreak.png') repeat-x;
+  height: 7px;
+  width: 100%;
+  margin: 30px 0 60px 0;
+}
+.content p,
+.content ol,
+.content ul,
+.content address {
+  float: left;
+  width: 85%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.3em;
+  line-height: 1.6em;
+  margin: 0 7.5% 20px 7.5%;
+}
+.content address {
+  color: #8e959c;
+}
+.content img {
+  max-width: 679px;
+  height: auto;
+}
+.content p.lead {
+  font-size: 1.45em;
+  line-height: 1.55em;
+  margin-bottom: 25px;
+}
+.content p img {
+  margin: 20px 0;
+  max-width: 547px;
+}
+.content p img.inline {
+  margin: 0;
+}
+.content p img.inline.right {
+  float: right;
+  margin: 4px 0 25px 30px;
+  border: none;
+}
+.content p img.inline.left {
+  float: left;
+  margin: 4px 30px 15px 0;
+}
+.content p .green {
+  color: #7ebd26;
+}
+.content p .blue {
+  color: #59c1e4;
+}
+.content p a.inline img {
+  opacity: 0.8;
+}
+.content p a.inline img:hover {
+  opacity: 1;
+}
+.content p .inline-quote {
+  float: right;
+  width: 30%;
+  margin-right: -4%;
+  padding: 0 0 15px 10%;
+  font-family: "FS Albert Web Light Italic", "Helvetica Neue", Arial, sans-serif;
+  font-size-adjust: 0.48;
+  font-weight: 200;
+  font-style: italic;
+  font-size: 1.5em;
+  letter-spacing: 0.03em;
+  line-height: 1.2em;
+  color: #adb3b9;
+  background: url('/assets/images/blog/quote_lightgrey.png') left top no-repeat;
+  background-position: 15% 5px;
+}
+.content p i {
+  font-style: normal;
+}
+.content p strong,
+.content p b {
+  font-weight: 500;
+  color: #454e5b;
+}
+.content p a.bigbutton {
+  font-size: inherit!important;
+  margin-left: 0;
+}
+.content .label,
+.content span.label {
+  padding: 2px 4px 3px;
+  line-height: 2em;
+  font-size: 0.85em;
+  font-weight: 500;
+  color: #ffffff;
+  text-transform: uppercase;
+  white-space: nowrap;
+  background: #5cc9e8;
+  -khtml-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+}
+.content .label.warning,
+.content span.label.warning {
+  background: #f56b92;
+  color: #ffffff;
+}
+.content .label.or,
+.content span.label.or {
+  background: #aea595;
+  color: #ffffff;
+}
+.content .label.success,
+.content span.label.success {
+  background: #accf23;
+}
+.content cite {
+  float: left;
+  width: 70%;
+  margin: 0 7.5% 0 11%;
+  border-left: 2px solid #bee1f3;
+  padding: 0 0 20px 5%;
+  font-size: 1.3em;
+  color: #2f353e;
+  font-weight: bold;
+}
+.content blockquote {
+  float: left;
+  width: 70%;
+  margin: 40px 7.5% 40px 11%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.3em;
+  line-height: 1.6em;
+  font-style: italic;
+  border-left: 2px solid #bee1f3;
+  padding: 0 0 0 5%;
+  clear: both;
+}
+.content blockquote.large,
+.content blockquote.pull {
+  font-family: "FS Albert Web Light Italic", "Helvetica Neue", Arial, sans-serif;
+  font-size-adjust: 0.48;
+  font-weight: 200;
+  font-style: italic;
+  font-size: 1.8em;
+  letter-spacing: 0.03em;
+  line-height: 1.2em;
+}
+.content blockquote.large small {
+  font-size: 0.6em;
+  letter-spacing: normal;
+}
+.content blockquote.pull p {
+  font-size: 1em!important;
+}
+.content blockquote small {
+  display: block;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.85em;
+  line-height: 1.5em;
+  color: #737c84;
+  padding: 10px 0 0 0;
+}
+.content blockquote h5 {
+  margin: 0 0 10px 0;
+  font-size: 1em;
+  padding: 0;
+}
+.content blockquote p {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1em!important;
+  margin: 0;
+  font-style: italic;
+  padding: 0;
+}
+.content ol {
+  list-style-type: decimal;
+  margin-bottom: 40px;
+}
+.content ul {
+  float: left;
+  list-style-type: disc;
+  margin-top: 8px;
+  margin-bottom: 40px;
+}
+.content ul.slim {
+  width: 70%;
+  clear: both;
+}
+.content ol li,
+.content ul li {
+  width: 80%;
+  margin-bottom: 15px;
+  margin-left: 7.5%;
+  padding: 0 0 0 3%;
+  line-height: 1.5em;
+  color: #8e959c;
+}
+.content ol li b,
+.content ul li b,
+.content ol li strong,
+.content ul li strong {
+  color: #2f353e;
+  font-weight: 500;
+}
+.content ol li i,
+.content ul li i {
+  font-style: normal;
+}
+.content .gallerypost {
+  float: left;
+  width: auto;
+  background: #f8f8f9;
+  padding: 3px;
+  -khtml-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  margin: 0 0 40px 7%;
+}
+.content .gallerypost a {
+  float: left;
+  border: 1px solid #e0e5e9;
+  -khtml-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  background: #ffffff;
+  padding: 6px;
+}
+.content .gallerypost a .image {
+  margin: 0;
+  padding: 0;
+  -khtml-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+}
+.content .gallerypost a:hover {
+  border-color: #c2ccd4;
+}
+.content .galleryimage {
+  float: left;
+  width: 100%;
+  margin: 20px 0 40px 0;
+  position: relative;
+}
+.content .galleryimage.inline {
+  width: 306px;
+  clear: none;
+  margin: 0 5px 15px 0;
+}
+.content .galleryimage.inline.first {
+  margin-left: 25px;
+}
+.content .galleryimage p {
+  position: absolute;
+  font-style: italic;
+  width: 230px;
+  left: 320px;
+  bottom: -18px;
+  color: #adb3b9;
+  padding: 0 0 0 10px;
+  border-left: 1px solid #d8dee3;
+}
+.content .galleryimage .gallery {
+  float: left;
+  width: 300px;
+  clear: both;
+  background: #d8dee3;
+  padding: 0;
+  margin: 0 0 0 7%;
+  border: 3px solid #f8f8f9;
+  -khtml-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+}
+.content .galleryimage .gallery:hover {
+  background: #c0cad2;
+}
+.content .galleryimage .gallery img {
+  width: 300px !important;
+  height: auto !important;
+  margin: 0;
+}
+.content .galleryimage .gallery img.scaled {
+  width: auto!important;
+}
+.content .galleryimage .gallery a,
+.content .galleryimage .gallery .thumb {
+  float: left;
+  padding: 0;
+  margin: 1px;
+  border: 2px solid #ffffff;
+  width: 294px;
+  height: 186px;
+  overflow: hidden;
+  -khtml-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  background: url('/assets/images/blog/campaignmonitor_marque_grey_small.gif') center no-repeat #ffffff;
+}
+.content div.figure {
+  float: left;
+  width: 92.5%;
+  margin: 10px 0 30px 7.5%;
+}
+.content div.figure img {
+  margin: 0 !important;
+}
+.content iframe {
+  float: left;
+  max-width: 577px;
+  margin: 0 0 30px 7.5%;
+  clear: both;
+}
+.content p iframe {
+  width: 100%;
+  margin: 0;
+  max-width: 100%;
+}
+.content table {
+  margin: 50px 0 50px 7.5%;
+  width: 85% !important;
+  border: 1px solid #e0e5e9;
+  border-collapse: collapse;
+  border-bottom: none;
+}
+.content table td {
+  border-bottom: 1px solid #e0e5e9;
+  padding: 2px;
+}
+.content table td.element-style {
+  text-align: left;
+  padding: 10px 6px;
+  width: 33%;
+  font-size: 1.2em;
+}
+.content table td.element-header {
+  text-align: left;
+  padding: 10px 0 10px 6px;
+  width: 33%;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #2f353e;
+}
+.content table td.comment {
+  font-size: 1.2em;
+  color: #8e959c;
+  text-align: center;
+}
+.content table tr.header {
+  background: #f8f8f9;
+}
+.content table tr:hover {
+  background: #f8f8f9;
+}
+.content table tr.inset {
+  color: #8e959c;
+}
+.content table tr.inset td.element-style.inset {
+  padding-left: 20px;
+}
+.content table#keyguide {
+  border: none;
+  margin: 0 0 20px 12%;
+}
+.content table#keyguide td {
+  border: none;
+  width: 33%;
+  padding: 10px 0 0 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.2em;
+  line-height: 1.5em;
+  color: #8e959c;
+}
+.content table#keyguide td .key {
+  display: inline-block;
+  *display: inline;
+  width: 10px;
+  overflow: hidden;
+  text-indent: -9000px;
+  height: 10px;
+  -khtml-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  margin: 0 5px 0 0;
+}
+.content table#keyguide td strong {
+  font-weight: 500;
+  color: #2f353e;
+}
+.content table#keyguide tr:hover {
+  background: none;
+}
+.content dl {
+  float: left;
+  width: 80%;
+  margin: 30px 7.5% 20px 7.5%;
+}
+.content dl dt {
+  float: left;
+  width: 20%;
+  height: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.3em;
+  line-height: 1.5em;
+  clear: both;
+  color: #8e959c;
+}
+.content dl dt:first-child {
+  color: #2f353e;
+}
+.content dl dd {
+  float: right;
+  position: relative;
+  width: 75%;
+  clear: right;
+  margin: 0 10px 30px 0;
+  border-left: 2px solid #bee1f3;
+}
+.content dl dd p {
+  width: 95%;
+  padding: 0;
+  margin: 0 0 0 5%;
+}
+.content .pullout,
+.content p.alert-1,
+.content p.alert-2 {
+  float: left;
+  width: 85%;
+  margin: 0 4.5% 20px 4.5%;
+  padding: 13px 3%;
+  border: 1px solid #bee1f3;
+  background: #f8fdfe;
+  -khtml-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.3em;
+  line-height: 1.5em;
+}
+.content .pullout.success,
+.content p.alert-1.success,
+.content p.alert-2.success {
+  background: #f6fde4;
+  border-color: #d1eea8;
+  color: #62931d;
+}
+.content .pullout.success strong,
+.content p.alert-1.success strong,
+.content p.alert-2.success strong {
+  color: #7ebd26;
+}
+.content .pullout.warning,
+.content p.alert-1.warning,
+.content p.alert-2.warning {
+  background: #fff3c5;
+  border-color: #ffe378;
+  color: #937f38;
+}
+.content .pullout.warning strong,
+.content p.alert-1.warning strong,
+.content p.alert-2.warning strong {
+  color: #b89f46;
+}
+.content .pullout.warning h5,
+.content p.alert-1.warning h5,
+.content p.alert-2.warning h5 {
+  color: #b89f46;
+  font-weight: bold;
+  font-size: 0.85em;
+  margin: 0 0 8px 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+.content .pullout.warning a,
+.content p.alert-1.warning a,
+.content p.alert-2.warning a {
+  color: #493f1c;
+}
+.content .pullout strong,
+.content p.alert-1 strong,
+.content p.alert-2 strong {
+  display: inline;
+  color: #72d0eb;
+  margin: 0 5px 0 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.85em;
+}
+.content p.alert-2 {
+  background: #fff3c5;
+  border-color: #ffe378;
+  color: #937f38;
+}
+.content p.alert-2 strong {
+  color: #b89f46;
+}
+.content .breakout {
+  float: left;
+  clear: both;
+  position: relative;
+  width: 89.5%;
+  margin: 20px 0 40px 4.5%;
+  border: 1px solid #bee1f3;
+  background: #f8fdfe;
+  -khtml-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  padding: 0 0 10px 0;
+}
+.content .breakout h3 {
+  font-family: "Open Sans", Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 1.3em;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  line-height: 1.5em;
+  color: #72d0eb;
+  margin: 30px 0 10px 0;
+}
+.content .breakout .verdict {
+  position: absolute;
+  width: 49px;
+  height: 49px;
+  background: url('/assets/images/resources/verdict.png') top center no-repeat;
+  top: -20px;
+  right: 13px;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.content .breakout .verdict.good {
+  background-position: bottom center;
+}
+.content pre {
+  float: left;
+  width: 85%;
+  margin: 10px 4.5% 40px 4.5%;
+  padding: 20px 3%;
+  border: 1px solid #e0e5e9;
+  background: #fcfcfd;
+  -khtml-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  font-family: "Droid Sans Mono", monospace, Courier;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.3em;
+  line-height: 1.6em;
+  color: #2f353e;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap !important;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.content .codebox h5 {
+  margin: 0;
+}
+.content .codeblock {
+  float: left;
+  width: 88%;
+  margin: 10px 0% 40px 4.5%;
+  background: #fcfcfd;
+  border: 1px solid #e0e5e9;
+  -khtml-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  color: #2f353e;
+}
+.content .codeblock code {
+  float: left;
+  width: 90%;
+  padding: 10px 25px!important;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap !important;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+  color: #2f353e;
+  line-height: 1.6em;
+  font-family: "Droid Sans Mono", monospace, Courier;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.3em;
+  line-height: 1.6em;
+}
+.content .syntax {
+  float: left;
+  width: 650px;
+  padding: 0 0 0 13px;
+  background: #2f353e;
+  margin: 10px 0 40px 19px;
+  -khtml-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  overflow: hidden;
+}
+.content .syntax .codehead {
+  position: relative;
+  float: left;
+  width: 610px;
+  background: #f8fdfe;
+  border: 1px solid #bee1f3;
+  border-bottom: none;
+  padding: 13px 19px;
+  font-size: 1.2em;
+}
+.content .syntax .codehead .method {
+  color: #59c1e4;
+  font-family: "Open Sans", Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 1em;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  line-height: 1em;
+}
+.content .syntax .codehead strong {
+  color: #59c1e4;
+  font-weight: 500;
+}
+.content .syntax .codehead code {
+  margin: 0 0 0 10px;
+  font-family: "Droid Sans Mono", monospace, Courier;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1em;
+  line-height: 1.2em;
+  color: #8e959c;
+}
+.content .syntax .codehead .switch {
+  position: absolute;
+  right: 10px;
+  top: 9px;
+  background: #ffffff;
+  padding: 1px;
+  border: 1px solid #bee1f3;
+  -khtml-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+}
+.content .syntax .codehead .switch a {
+  float: left;
+  padding: 5px 6px;
+  color: #8e959c;
+  font-size: 0.85em;
+  font-weight: 500;
+}
+.content .syntax .codehead .switch a.active {
+  background: #19a9e5;
+  color: #ffffff;
+  -khtml-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+}
+.content .syntax .border {
+  float: left;
+  margin: 0;
+  padding: 20px 19px;
+  border: 1px solid #e0e5e9;
+  background: #fcfcfd;
+  color: #2f353e;
+  width: 610px;
+}
+.content .syntax .border pre {
+  float: none;
+  width: 100%;
+  padding: 0;
+  border: none;
+}
+.content .syntax pre {
+  float: left;
+  margin: 0;
+  -khtml-border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  width: 608px;
+  padding: 20px 19px;
+  border-left: 3px solid #242b33;
+}
+.content .syntax pre.border {
+  border-top-color: #bee1f3;
+}
+.content .syntax p {
+  float: right;
+  margin: 0;
+  padding: 20px 19px;
+  border: 1px solid #e0e5e9;
+  background: #fcfcfd;
+  color: #2f353e;
+  width: 627px;
+  border-left: 3px solid #242b33;
+}
+.content .syntax p.border {
+  border-top-color: #bee1f3;
+}
+.content .syntax p .label {
+  font-family: "Droid Sans Mono", monospace, Courier;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1;
+  line-height: 1;
+  margin-right: 12px;
+}
+.content .plaintext {
+  float: left;
+  width: 100%;
+  position: relative;
+  margin: 0 0 40px;
+}
+.content .plaintext .margins {
+  position: absolute;
+  height: 206px;
+  width: 2px;
+  border-left: 1px solid rgba(243, 177, 157, 0.4);
+  border-right: 1px solid rgba(243, 177, 157, 0.4);
+  left: 8%;
+  top: 0;
+  z-index: 100;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.content .plaintext .margins.auto {
+  height: 98%;
+}
+.content .plaintext textarea,
+.content .plaintext pre {
+  float: left;
+  width: 76%;
+  height: 150px;
+  margin: 0 4.5%;
+  padding: 28px 7.5%;
+  resize: none;
+  border: none;
+  font-family: "Droid Sans Mono", monospace, Courier;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.3em;
+  line-height: 25px;
+  color: #2f353e;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f2edca), color-stop(5%, #fcfae8));
+  background: -moz-repeating-linear-gradient(top, #fcfae8, #fcfae8 24px, #f2edca 25px);
+  background: repeating-linear-gradient(top, #fcfae8, #fcfae8 24px, #f2edca 25px);
+  -webkit-background-size: 100% 25px;
+  outline: none;
+}
+.content .plaintext pre {
+  height: auto;
+  outline: none;
+}
+.content .plaintext .ripped {
+  float: left;
+  width: 91%;
+  background: url('/assets/images/blog/ripped_paper_yellow.gif') left bottom repeat-x;
+  height: 9px;
+  margin: 0 4.5%;
+}
+.content img.border {
+  border: 1px solid #e0e5e9;
+}
+.content .image {
+  float: left;
+  margin: 0 7.5% 20px 7.5%;
+  border: none;
+  padding: 0;
+  outline: none;
+}
+.content .fullimage {
+  float: left;
+  margin: 10px 0 30px 0;
+  border: none;
+  padding: 0;
+  outline: none;
+}
+.content .image.spacer,
+.content .fullimage.spacer {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+.content .caption {
+  float: left;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.content .caption img.image,
+.content .caption img.fullimage,
+.content .caption img.spacer {
+  margin-bottom: 15px;
+}
+.content .caption p {
+  margin-top: 0;
+  color: #b0b6bb;
+  padding-bottom: 12px;
+  border-bottom: 1px dotted #e0e5e9;
+}
+.content .caption p em {
+  font-style: italic;
+}
+.content ul.recentlist {
+  width: 91%;
+  list-style: none;
+  padding: 0;
+  margin: 0 4.5%;
+}
+.content ul.recentlist li {
+  float: left;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #e0e5e9;
+}
+.content ul.recentlist li a {
+  float: left;
+  width: 93%;
+  padding: 12px 3.5%;
+  margin: 1px 0;
+}
+.content ul.recentlist li a:hover {
+  background: #effafd;
+}
+.content .halfbox {
+  float: left;
+  background: #f6f6f8;
+  margin: 10px 1% 50px 4%;
+  width: 38%;
+  -khtml-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  padding: 15px 3.5%;
+  font-size: 1.2em;
+  color: #454e5c;
+}
+.content .halfbox.right {
+  margin: 10px 4% 50px 1%;
+}
+.content .halfbox .row {
+  float: left;
+  width: 100%;
+  border-bottom: 1px solid #e5e5e7;
+  padding: 8px 0;
+}
+.content .halfbox .row.last {
+  border-bottom: none;
+}
+.content .halfbox .row strong {
+  font-weight: 500;
+  color: #2f353e;
+}
+.content .halfbox .row .percent {
+  float: right;
+  width: 70px;
+  text-align: right;
+}
+.content .halfbox .row .percent.mover {
+  background: url('/img/marketing/global/green_arrow_up.gif') left center no-repeat;
+}
+.content .halfbox .row .percent.shaker {
+  background: url('/img/marketing/global/red_arrow_down.gif') left center no-repeat;
+}
+.content a.bigbutton {
+  float: left;
+  margin: 20px 0 20px 5.5%;
+  -khtml-border-radius: 14px;
+  -moz-border-radius: 14px;
+  -webkit-border-radius: 14px;
+  border-radius: 14px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  background: url('/img/marketing/global/arrow_right_white_padded.gif') right center no-repeat #7ebd26;
+  color: #ffffff;
+  font-weight: 500;
+  padding: 8px 27px 9px 13px;
+  font-size: 1.2em;
+}
+.content a.bigbutton:hover {
+  background-color: #57ad17;
+}
+.content a.bigbutton:active {
+  background-color: #4c9614;
+}
+.content a.bigbutton.blue {
+  background-color: #19a9e5;
+}
+.content a.bigbutton.blue:hover {
+  background-color: #1487b7;
+}
+.content a.bigbutton.blue:active {
+  background-color: #1176a0;
+}
+.content a.bigbutton.download {
+  background-image: url('/img/marketing/global/download.gif');
+  background-position: right center;
+}
+.content a.bigbutton.download span {
+  color: #deee9c;
+}
+.content a.bigbutton.download:active {
+  background-position: right 60%;
+}
+.content .clear {
+  float: left;
+  width: 100%;
+  clear: both;
+}
+
+.content .main-content-heading {
+	padding: 0;
+}
+.imagecontent {
+  text-align: center;
+}
+.imagecontent a.return {
+  display: inline-block;
+  margin: 0 0 40px 0;
+  -khtml-border-radius: 14px;
+  -moz-border-radius: 14px;
+  -webkit-border-radius: 14px;
+  border-radius: 14px;
+  behavior: url('http://campaignmonitor.com/assets/style/PIE.htc');
+  background: url('/img/marketing/global/arrow_left_white_padded.gif') left center no-repeat #19a9e5;
+  color: #ffffff;
+  font-weight: 500;
+  padding: 8px 13px 9px 27px;
+  font-size: 1.2em;
+}
+.imagecontent a.return:hover {
+  background-color: #1487b7;
+}
+.imagecontent a.return:active {
+  background-color: #1176a0;
+}
+.pagecontent {
+  float: left;
+  width: 69%;
+  margin: 10px 0 0 2.5%;
+  padding: 0 0 40px 0;
+}
+.pagecontent .breadcrumb {
+  float: left;
+  width: 80%;
+  margin: 0 0 5px 7.5%;
+  color: #adb3b9;
+  font-family: Georgia;
+  font-size: 1.3em;
+}
+.pagecontent .breadcrumb a {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1em;
+  line-height: 1.5em;
+  color: #adb3b9;
+}
+.pagecontent .breadcrumb a:hover {
+  color: #8e959c;
+}
+.pagecontent h1 {
+  font-family: "FS Albert Web Bold", "Helvetica Neue", Arial, sans-serif;
+  font-size-adjust: 0.49;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 2.8em;
+  letter-spacing: -0.03em;
+  line-height: 1em;
+  margin: 0 0 35px 7.5%;
+  color: #2f353e;
+  width: 80%;
+}
+.pagecontent h1 a {
+  color: #2f353e;
+  font-weight: bold;
+}
+.pagecontent h1 a:hover {
+  color: #19a9e5;
+}
+.pagecontent h1 a:hover em {
+  color: #72d0eb;
+}
+.pagecontent h1 a:active {
+  color: #0f6589;
+}
+.pagecontent h1 em {
+  color: #19a9e5;
+}
+.pagecontent .chapter {
+  font-family: "Open Sans", Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 1.35em;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  line-height: 1.5em;
+  color: #d8dee3;
+  margin: 0 0 0 7.5%;
+}
+
+#origami-left {
+	position: absolute;
+	background: url('/ruxit/img/origami_left.png') top left
+		no-repeat;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 707px;
+	z-index: 0
+}
+
+#origami-right {
+	position: absolute;
+	background: url('/ruxit/img/origami_right.png') top right
+		no-repeat;
+	top: 0;
+	right: 0;
+	width: 817px;
+	height: 547px;
+	z-index: 1
+}
+
+.central hgroup {
+	padding: 45px 0 64px 0;
+	border: 0;
+	float: none;
+}
+
+.central .container-box {
+	width: 833px;
+	background-color: #fff;
+	border: 2px solid #e0e5e9;
+	padding: 0 40px 0 65px;
+	margin-bottom: 80px;
+	margin-left: 23px;
+	-khtml-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+}
+
+.central .container-box .content {
+	width: 485px;
+	padding: 52px 55px 55px 0;
+	border-right: 1px solid #e0e5e9;
+	display: inline-block;
+	*display: inline;
+	vertical-align: top;
+	min-height: 330px !important;
+}
+
+.central .container-box .content label {
+	display: block;
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 1.3em;
+	line-height: 1.5em;
+	color: #1a232b
+}
+
+.central .container-box .content label.inline-label {
+	display: inline-block;
+	color: #8e959c;
+	margin-left: 3px
+}
+
+.central .container-box .content label.inline-label em {
+	color: #c4c8cc
+}
+
+.central .container-box .content label .confirmation {
+	color: #7ebd26;
+	float: right;
+	background: url('/img/marketing/signup/available.png') no-repeat right
+		center;
+	padding-right: 18px
+}
+
+.central .container-box .content label .error {
+	color: #f69100;
+	float: right;
+	background: url('/img/marketing/signup/taken.png') no-repeat right
+		center;
+	padding-right: 18px
+}
+
+.central .container-box .content .flush-block {
+	display: block;
+	margin: 0 0 16px 0
+}
+
+.central .container-box .content .flush-block #newsletter-subscribe {
+	position: relative;
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 1.3em
+}
+
+.central .container-box .content input::-webkit-input-placeholder {
+	color: #d8dee3
+}
+
+.central .container-box .content input:-moz-placeholder {
+	color: #d8dee3
+}
+
+.central .container-box .content input[type="text"],.central .container-box .content input[type="password"]
+	{
+	display: block;
+	width: 463px;
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 1.6em;
+	border: 1px solid #c3cbd3;
+	-khtml-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	padding: 10px;
+	margin-bottom: 16px
+}
+
+.central .container-box .content input[type="text"]:focus,.central .container-box .content input[type="password"]:focus
+	{
+	border-color: #8898a8
+}
+
+.central .container-box .content input[type="text"]#site-address,.central .container-box .content input[type="password"]#site-address
+	{
+	text-align: left
+}
+
+.central .container-box .content .nolink {
+	color: #19a9e5
+}
+
+.central .container-box .content .input-group {
+	position: relative
+}
+
+.central .container-box .content .input-group.country {
+	margin-bottom: 16px
+}
+
+.central .container-box .content .input-group .validation-error {
+	position: absolute;
+	right: 6px;
+	top: 6px;
+	font-size: 12px;
+	line-height: 26px;
+	padding: 0 10px 0 15px;
+	color: #f69100;
+	-khtml-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	background: #ffec98 url('/img/marketing/signup/alert-left-cap.png')
+		no-repeat 0 center
+}
+
+.central .container-box .content .input-group .validation-error.no-arrow
+	{
+	padding: 0 10px;
+	margin-top: 5px;
+	right: 6px;
+	top: 32px;
+	background: #ffec98
+}
+
+.central .container-box .content .input-group#site-address-group input {
+	padding-right: 132px;
+	width: 341px
+}
+
+.central .container-box .content .input-group#site-address-group aside {
+	position: absolute;
+	top: 0;
+	right: 11px;
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 1.6em;
+	line-height: 66px
+}
+
+.central .container-box .content aside {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 1.2em;
+	line-height: 1.5em;
+	color: #adb3b9;
+	margin: -14px 0 16px 0
+}
+
+.central .container-box .content span.divider {
+	border: 0;
+	display: block;
+	height: 40px;
+	width: 100%;
+	margin: 0
+}
+
+.central .container-box aside#sidebar {
+	display: inline-block;
+	*display: inline;
+	width: 230px;
+	vertical-align: top;
+	margin-top: 60px;
+	margin-left: 47px
+}
+
+.central .container-box aside#sidebar hgroup {
+	margin: 0;
+	padding: 0;
+	margin-bottom: 55px
+}
+
+.central .container-box aside#sidebar hgroup h2 {
+	width: auto;
+	font-family: "FS Albert Web Light", "Helvetica Neue", Arial, sans-serif;
+	font-size-adjust: .48;
+	font-weight: 200;
+	font-style: normal;
+	font-size: 2em;
+	letter-spacing: .03em;
+	line-height: 1.5em;
+	margin-bottom: 10px;
+	color: #1a232b
+}
+
+.central .container-box aside#sidebar hgroup h3 {
+	font-size: 1.4em;
+	color: #adb3b9;
+	line-height: 1.5em
+}
+
+.central .container-box aside#sidebar hgroup.attention h2 {
+	color: #7ebd26
+}
+
+.central .container-box aside#sidebar ul#client-listing {
+	margin-top: -15px
+}
+
+.central .container-box aside#sidebar ul#client-listing li {
+	display: inline-block;
+	*display: inline;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background: url('/img/marketing/signup/customers-sprite.png') no-repeat
+		0 0;
+	position: relative;
+	margin-bottom: 15px
+}
+
+.central .container-box aside#sidebar ul#client-listing li#twitter {
+	width: 28px;
+	height: 20px
+}
+
+.central .container-box aside#sidebar ul#client-listing li#facebook {
+	width: 62px;
+	height: 13px;
+	background: url('/img/marketing/signup/customers-sprite.png') no-repeat
+		-44px -4px;
+	top: 4px;
+	margin-left: 15px
+}
+
+.central .container-box aside#sidebar ul#client-listing li#nike {
+	width: 35px;
+	height: 13px;
+	background: url('/img/marketing/signup/customers-sprite.png') no-repeat
+		-123px -5px;
+	margin-left: 15px;
+	top: 3px;
+	margin-right: 50px
+}
+
+.central .container-box aside#sidebar ul#client-listing li#wwf {
+	width: 26px;
+	height: 39px;
+	background: url('/img/marketing/signup/customers-sprite.png') no-repeat
+		0 -34px
+}
+
+.central .container-box aside#sidebar ul#client-listing li#intel {
+	width: 45px;
+	height: 30px;
+	background: url('/img/marketing/signup/customers-sprite.png') no-repeat
+		-46px -39px;
+	margin-left: 15px;
+	top: 2px
+}
+
+.central .container-box aside#sidebar ul#client-listing li#apple {
+	width: 26px;
+	height: 31px;
+	background: url('/img/marketing/signup/customers-sprite.png') no-repeat
+		-106px -36px;
+	margin-left: 15px
+}
+
+.central .container-box aside#sidebar ul#client-listing li#hp {
+	width: 33px;
+	height: 33px;
+	background: url('/img/marketing/signup/customers-sprite.png') no-repeat
+		-152px -36px;
+	margin-left: 15px
+}
+
+.central .container-box aside#sidebar blockquote {
+	width: 100%;
+	float: left;
+	margin: 0 0 55px -30px;
+	padding: 0 20px 0 30px;
+	font-family: "FS Albert Web Light Italic", "Helvetica Neue", Arial,
+		sans-serif;
+	font-size-adjust: .48;
+	font-weight: 200;
+	font-style: italic;
+	font-size: 1.8em;
+	letter-spacing: .03em;
+	line-height: 1.2em;
+	color: #2f353e;
+	background: url('/ruxit/img/quote.png') top left no-repeat
+}
+
+.central .container-box aside#sidebar blockquote .source {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: .7em;
+	line-height: 1.5em;
+	font-style: normal;
+	font-weight: normal;
+	color: #adb3b9;
+	float: left;
+	width: 100%;
+	line-height: auto;
+	margin: 10px 0 0 0
+}
+
+#submit-button {
+	margin-top: 50px
+}
+
+#submit-button .button {
+	display: inline-block;
+	*display: inline;
+	color: #fff;
+	padding: 12px 16px;
+	margin: 2px 0 0 0;
+	-khtml-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 1.4em;
+	border: 1px solid #679b1f;
+	background: url('/ruxit/img/button_back.png') top left
+		repeat-x #b9dc2f;
+	text-shadow: 1px 1px #56821a
+}
+
+#submit-button .button:hover,#submit-record-script .button:focus {
+	background-position: -300px 0
+}
+
+#submit-button .button:active {
+	background-position: top right;
+	text-shadow: 0 -1px #456815;
+	border-top-color: #547d19
+}
+
+#submit-button .button.disabled {
+	background: #ced2d5;
+	text-shadow: 0 -1px #adb3b9;
+	border-color: #adb3b9
+}
+
+#submit-button aside {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 1.1em;
+	line-height: 1.5em;
+	display: inline-block;
+	*display: inline;
+	vertical-align: center;
+	color: #adb3b9;
+	margin-left: 10px;
+	padding-left: 10px;
+	position: relative;
+	width: 260px;
+	top: 7px
+}
+
+#submit-button aside a {
+	color: #adb3b9;
+	border-bottom: 1px dotted #8e959c
+}
+
+#submit-record-script, #submit-create-script aside a:hover {
+	color: #8e959c
+}
+
+select#timezone, select#script-type {
+	border: 1px solid #d8dee3;
+	background-color: #fff;
+	padding: 7px 10px;
+	height: 28px;
+	line-height: 28px;
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 1.3em;
+	width: 484px;
+	cursor: pointer
+}
+
+.customStyleSelectBox {
+	width: 466px;
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-size: 1.3em;
+	border: 1px solid #d8dee3;
+	-khtml-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	padding: 7px 7px 7px 10px;
+	background-color: #efefef;
+	background-image: linear-gradient(bottom, #efefef 0, #fbfbfb 100%);
+	background-image: -o-linear-gradient(bottom, #efefef 0, #fbfbfb 100%);
+	background-image: -moz-linear-gradient(bottom, #efefef 0, #fbfbfb 100%);
+	background-image: -webkit-linear-gradient(bottom, #efefef 0, #fbfbfb 100%);
+	background-image: -ms-linear-gradient(bottom, #efefef 0, #fbfbfb 100%);
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #efefef),
+		color-stop(1, #fbfbfb));
+	-webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+	cursor: pointer
+}
+
+.customStyleSelectBoxInner {
+	background: url('/ruxit/img/dropdown-arrow.png') center right
+		no-repeat;
+	width: 465px !important
+}
+
+#ability-flags {
+	margin-top: 10px;
+}
+
+#submit-message {
+	color: orange !important;
+}
+
+#requires-flags {
+	margin-bottom: 16px;
+}
+
+.customStyleSelectBox {
+	margin-bottom: 16px !important;
+}
+
+.content .main-content-heading {
+	padding: 0;
+	font-size: 1.8em !important;
+}
+
+.content .main-content-heading-2 {
+	padding: 0;
+	font-size: 1.6em !important;
+}
+
+.content input.disabled {
+	background-color: #efefef;
+	background-image: linear-gradient(bottom, #efefef 0, #fbfbfb 100%);
+	background-image: -o-linear-gradient(bottom, #efefef 0, #fbfbfb 100%);
+	background-image: -moz-linear-gradient(bottom, #efefef 0, #fbfbfb 100%);
+	background-image: -webkit-linear-gradient(bottom, #efefef 0, #fbfbfb 100%);
+	background-image: -ms-linear-gradient(bottom, #efefef 0, #fbfbfb 100%);
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #efefef), color-stop(1, #fbfbfb));
+	-webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+} 

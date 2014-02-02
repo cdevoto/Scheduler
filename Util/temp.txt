@@ -1,0 +1,22 @@
+MaintScheduleCache [
+	maintSchedulesById={
+	    6=MaintScheduleView [scheduleId=6, tenantId=1, timeZone=TimeZone [id=7, name=US/Eastern], name=Custom Maintenance Schedule 1, recurrenceRule=0 21 * * *, duration=60, lastModified=1391050345000, deleted=false, active=true, testDefinitionIds=[4]], 
+	    7=MaintScheduleView [scheduleId=7, tenantId=1, timeZone=TimeZone [id=7, name=US/Eastern], name=Custom Maintenance Schedule 2, recurrenceRule=0 21 * * *, duration=60, lastModified=1391050345000, deleted=false, active=true, testDefinitionIds=[2]]
+	},
+	maintSchedulesByTestDefId={
+	    2={
+	        7=MaintScheduleView [scheduleId=7, tenantId=1, timeZone=TimeZone [id=7, name=US/Eastern], name=Custom Maintenance Schedule 2, recurrenceRule=0 21 * * *, duration=60, lastModified=1391050345000, deleted=false, active=true, testDefinitionIds=[2]]
+	    }, 
+	    4={
+	        6=MaintScheduleView [scheduleId=6, tenantId=1, timeZone=TimeZone [id=7, name=US/Eastern], name=Custom Maintenance Schedule 1, recurrenceRule=0 21 * * *, duration=60, lastModified=1391050345000, deleted=false, active=true, testDefinitionIds=[4]]
+	    }
+	},
+	testDefsById={
+	    2=TestDefinition [id=2, activeMaintSchedules={
+	        7=MaintScheduleView [scheduleId=7, tenantId=1, timeZone=TimeZone [id=7, name=US/Eastern], name=Custom Maintenance Schedule 2, recurrenceRule=0 21 * * *, duration=60, lastModified=1391050345000, deleted=false, active=true, testDefinitionIds=[2]]
+	    }], 
+	    4=TestDefinition [id=4, activeMaintSchedules={
+	        6=MaintScheduleView [scheduleId=6, tenantId=1, timeZone=TimeZone [id=7, name=US/Eastern], name=Custom Maintenance Schedule 1, recurrenceRule=0 21 * * *, duration=60, lastModified=1391050345000, deleted=false, active=true, testDefinitionIds=[4]]
+	    }]
+	}
+]

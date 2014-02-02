@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RUXIT - Define Synthetic Test Schedule</title>
+	<meta charset="utf-8">
+    <link rel="shortcut icon" type="image/x-icon" href="/ruxit/img/favicon.ico" />
+	<link href="css/ruxit.css" media="screen,projection" rel="stylesheet" type="text/css">
+	<link href="css/data-table.css" media="screen,projection" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/ruxit/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/ruxit/js/purl.js"></script>
+    <script type="text/javascript" src="/ruxit/js/later.min.js"></script>
+    <script type="text/javascript" src="/ruxit/js/edit-maint-schedule.js"></script>
+    
+</head>
+<body class="signup responsive">
+<header class="blue snug">
+        <nav>
+        
+            <div class="central">
+                <ul id="global">
+                    <li class="highlight"><a href="/ruxit/update-profile.html" id="login">Carlos Devoto</a></li>
+                </ul>
+            </div>
+        
+            <div class="fullwidth dark">
+                <div class="central">
+                    <ul id="primary" class="tan">
+                        <li class="active"><a href="/ruxit/manage-scripts.html" id="scripts">Scripts</a></li>
+                        <li><a href="/ruxit/manage-maint-schedules.html" id="maint-schedules">Maintenance Schedules</a></li>
+                        <li id="logo"><a href="/ruxit/manage-scripts.html" title="RUXIT">RUXIT</a></li>
+                    </ul>
+                </div>
+            </div>
+        
+        </nav>
+    </header>
+    <section class="fullwidth gray">
+            <div id="origami-left"></div>
+            <div id="origami-right"></div>
+
+            <section class="central">
+                <hgroup>
+                    <h1>Define a maintenance schedule</h1>
+                    <h2>You can define a maintenance schedule and associated with any of your test execution schedules.</h2>
+                </hgroup>
+
+                <section class="container-box">
+                    <section class="content">
+                    
+                       <form action="/api/schedule" method="post" id="form-edit-maint-schedule" name="editMaintSchedule">
+  
+                       <label id="name-label" for="name">Name</label>
+                        <div class="input-group">
+                            <input class="required check-blur" type="text" id="name" name="name" tabindex="1" spellcheck="false" value="">
+                            
+                        </div>
+
+                        <label for="rrule">Recurrence Rule (cron)</label>
+                        <div class="input-group">
+                            <input class="required check-blur" type="text" id="rrule" name="rrule" tabindex="2" spellcheck="false" value="">
+                            
+                        </div>
+                        
+                        
+                        <label for="duration">Duration of Maintenance Window (minutes)</label>
+                        <div class="input-group">
+                            <input class="required check-blur" type="text" id="duration" name="duration" tabindex="3" spellcheck="false" value="">
+                            
+                        </div>
+
+                       <label for="timezone">Time Zone</label>
+                        <div class="input-group">
+                            <select id="timezone" name="timezone" tabindex="4" style="position: absolute; opacity: 0; font-size: 13px; height: 27px;" class="required check-blur">
+                                <option value="">Please Select a Time Zone</option>
+                                
+                            </select><span class="customStyleSelectBox" style="display: inline-block;"><span class="customStyleSelectBoxInner" style="width: 465px; display: inline-block;">Please Select a Time Zone</span></span>
+                        </div>
+                        
+                        <h3 class="main-content-heading-2"><em>Apply to the Following Execution Schedules:</em></h3>
+
+						<table id="select-schedule-table" class="data-table" summary="Select Execution Schedules">
+							<thead>
+								<tr>
+									<th scope="col" class="table-select"><input type="checkbox" id="select-test-defs"></th>
+									<th scope="col" class="table-action">Schedule</th>
+								</tr>
+							</thead>
+							<tbody id="select-schedule-table-body">
+							</tbody>
+						</table>
+
+ 						<section id="submit-button">
+							<input type="submit" value="Create it!" id="save-schedule" tabindex="3" class="button">
+							<aside id="submit-message"></aside>
+						</section>
+						<input id="tenant-id" type="hidden" name="tenantId">
+						<input id="schedule-id" type="hidden" name="scheduleId">
+						</form>
+					</section>
+
+                    <aside id="sidebar">
+                        <blockquote>Started using RUXIT today, and I'm already in love. Many thanks for creating sheer awesomeness!<br><span class="source">— Barack Obama</span></blockquote>
+
+                        <hgroup>
+                            <h2>You're in good company</h2>
+                            <h3>More than 400,000 companies in over 100 countries already rely on RUXIT to monitor their critical applications.</h3>
+                        </hgroup>
+
+                    </aside>
+                </section>
+            </section>
+
+        </section>
+</body>
+</html>

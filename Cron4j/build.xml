@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="copy_jar" name="Create Jar for Project cron4j">
+    <target name="create_jar">
+        <jar destfile="cron4j-2.2.5-mod.jar">
+            <fileset dir="bin"/>
+        </jar>
+    </target>
+	
+    <target name="copy_jar" depends="create_jar">
+    	<copy file="cron4j-2.2.5-mod.jar" todir="../RecurrentTestScheduler/lib"/>
+    </target>
+
+    	<!-- generic compile step -->
+	<target name="compile">
+		<javac srcdir="src" destdir="bin" debug="on" includeantruntime="false">
+			<classpath>
+				<fileset dir="lib">
+					<include name="**/*.jar"/>
+				</fileset>
+			</classpath>
+		</javac>
+	</target>
+		
+		
+	<!-- jenkins specific build tasks -->
+	<target name="jenkins-build" depends="compile">
+	</target>
+	
+	
+</project>

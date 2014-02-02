@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="copy_jar" name="Create Jar for Project SchedulerService">
+    <target name="create_jar">
+        <jar destfile="scheduler-core-1.0.0.jar">
+            <fileset dir="bin"/>
+        </jar>
+    </target>
+	
+    <target name="copy_jar" depends="create_jar">
+    	<copy file="scheduler-core-1.0.0.jar" todir="../RecurrentTestScheduler/lib"/>
+    	<copy file="scheduler-core-1.0.0.jar" todir="../SyntheticAPIs/WebContent/WEB-INF/lib"/>
+    </target>
+
+    	<!-- generic compile step -->
+	<target name="compile">
+		<javac srcdir="src" destdir="bin" debug="on" includeantruntime="false">
+			<classpath>
+				<fileset dir="lib">
+					<include name="**/*.jar"/>
+				</fileset>
+			</classpath>
+		</javac>
+	</target>
+		
+		
+	<!-- jenkins specific build tasks -->
+	<target name="jenkins-build" depends="compile">
+	</target>
+	
+	
+</project>

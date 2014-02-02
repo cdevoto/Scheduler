@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RUXIT - Manage Synthetic Test Scripts</title>
+	<meta charset="utf-8">
+    <link rel="shortcut icon" type="image/x-icon" href="/ruxit/img/favicon.ico" />
+	<link href="css/ruxit.css" media="screen,projection" rel="stylesheet" type="text/css">
+	<link href="css/data-table.css" media="screen,projection" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/ruxit/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/ruxit/js/manage-scripts.js"></script>
+</head>
+<body class="signup responsive">
+<header class="blue snug">
+        <nav>
+        
+            <div class="central">
+                <ul id="global">
+                    <li class="highlight"><a href="/ruxit/update-profile.html" id="login">Carlos Devoto</a></li>
+                </ul>
+            </div>
+        
+            <div class="fullwidth dark">
+                <div class="central">
+                    <ul id="primary" class="tan">
+                        <li class="active"><a href="/ruxit/manage-scripts.html" id="scripts">Scripts</a></li>
+                        <li><a href="/ruxit/manage-maint-schedules.html" id="maint-schedules">Maintenance Schedules</a></li>
+                        <li id="logo"><a href="/ruxit/manage-scripts.html" title="RUXIT">RUXIT</a></li>
+                    </ul>
+                </div>
+            </div>
+        
+        </nav>
+    </header>
+    <section class="fullwidth gray">
+            <div id="origami-left"></div>
+            <div id="origami-right"></div>
+
+            <section class="central">
+                <hgroup>
+                    <h1>Manage your synthetic test scripts</h1>
+                    <h2>You can create your own synthetic test scripts and schedule these scripts for execution from anywhere in the world.</h2>
+                </hgroup>
+
+                <section class="container-box">
+                    <section class="content">
+                        <!-- <form action="/signup" method="post" id="form-sign-up" name="signUp"> -->
+  
+						<table id="script-table" class="data-table" summary="Manage Scripts">
+							<thead>
+								<tr>
+									<th scope="col">Script</th>
+									<th scope="col" class="table-action">Actions</th>
+								</tr>
+							</thead>
+							<tbody id="script-table-body">
+							</tbody>
+						</table>
+
+						<section id="submit-button">
+							<input type="submit" value="Record a script" id="record-script" class="button">
+						    <aside>Record a new test script using our state-of-the-art, web-based recorder.</aside>
+						</section>
+					</section>
+
+                    <aside id="sidebar">
+                        <blockquote>Started using RUXIT today, and I'm already in love. Many thanks for creating sheer awesomeness!<br><span class="source">— Barack Obama</span></blockquote>
+
+                        <hgroup>
+                            <h2>You're in good company</h2>
+                            <h3>More than 400,000 companies in over 100 countries already rely on RUXIT to monitor their critical applications.</h3>
+                        </hgroup>
+
+                    </aside>
+                </section>
+            </section>
+
+
+        </section>
+</body>
+</html>

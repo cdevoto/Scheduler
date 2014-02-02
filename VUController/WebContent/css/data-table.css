@@ -1,0 +1,52 @@
+.data-table {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	text-align: left;
+	border-collapse: collapse;
+	margin-bottom: 25px;
+}
+
+.data-table th {
+	font-weight: normal;
+	font-size: 13px;
+	color: #036;
+	background: #d4d7e3;
+	padding: 8px !important;
+}
+
+.data-table td {
+	background: #f1f2f6;
+	border-top: 1px solid #fff;
+	color: #666;
+	padding: 8px !important;
+}
+
+.data-table tbody tr:hover td {
+	background: #e1e3eb;
+}
+
+.data-table tbody a {
+	color: #19a9e5;
+	text-decoration:none;
+} 
+
+.data-table tbody a:hover {
+	/*color: #1277a1;*/
+	color: #000;
+} 
+
+#test-table {
+	width: 1000px !important;
+	margin: 0 0 50px 0;
+	border:none;
+	line-height: 100%;
+}
+
+#test-table-body tr.hilite td {
+	background: #FFCDD5;
+}
+
+#test-table-body tr:hover.hilite td {
+	background: #FFC0CB;
+}
+

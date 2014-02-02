@@ -1,0 +1,65 @@
+/*
+b9c9fe > d4d7e3
+e8edff > f1f2f6
+d0dafd > e1e3eb
+*/
+
+.data-table {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	text-align: left;
+	border-collapse: collapse;
+}
+
+.data-table th {
+	font-weight: normal;
+	font-size: 13px;
+	color: #036;
+	background: #d4d7e3;
+	padding: 8px !important;
+}
+
+.data-table td {
+	background: #f1f2f6;
+	border-top: 1px solid #fff;
+	color: #666;
+	padding: 8px !important;
+}
+
+.data-table tbody tr:hover td {
+	background: #e1e3eb;
+}
+
+.data-table tbody a {
+	color: #19a9e5;
+	text-decoration:none;
+} 
+
+.data-table tbody a:hover {
+	/*color: #1277a1;*/
+	color: #000;
+} 
+
+#script-table, #schedule-table, #lcp-table, #maint-schedule-table, #select-schedule-table {
+	width: 480px !important;
+	margin: 0;
+	border:none;
+	line-height: 100%;
+}
+
+#script-table th.table-action, td.table-action {
+	width: 150px;
+}
+
+#maint-schedule-table th.table-action, td.table-action {
+	width: 80px !important;
+}
+
+#schedule-table th.table-action, td.table-action {
+	width: 220px;
+}
+
+.data-table th.table-select, td.table-select {
+	width: 25px;
+}
+
