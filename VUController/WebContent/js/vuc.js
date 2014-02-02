@@ -14,6 +14,9 @@ RUXIT.vuc = (function () {
 	var poll = false;
 	var maxTestsDisplayed = 20;
 	var testsRetrieved = 0;
+	var pollInterval = 500;
+	var xhr;
+	
 	var init = function () {
 		var playPause = $("#play-pause");
 		$("#customize-supported").change(function () {
@@ -24,6 +27,16 @@ RUXIT.vuc = (function () {
 			}
 		});
 		
+		$("#supported-attributes *").filter(":input").each(function () {
+			$(this).change(function () {
+				abortRequest(xhr);
+			});
+		});
+		
+		$("#max-tests").change(function () {
+			abortRequest(xhr);
+		});
+		
 		if (vucId === undefined) {
 			$("#vuc-name").append(" (Unknown)");
 		} else {
@@ -32,6 +45,7 @@ RUXIT.vuc = (function () {
 		if (vucId !== undefined) {
 			playPause.removeClass("hidden");
 			playPause.click(function () {
+				abortRequest(xhr);
 				if (!poll) {
 					poll = true;
 					playPause.val("Pause");
@@ -40,9 +54,17 @@ RUXIT.vuc = (function () {
 					playPause.val("Play");
 				}
 			});
-			setInterval(pollForTests, 500);
+			setTimeout(pollForTests, pollInterval);
 			getVucDetails();
 		}
+	},
+	
+	abortRequest = function (currentXhr) {
+		setTimeout(function () {
+			if (xhr !== undefined && xhr === currentXhr) {
+				xhr.abort();
+			}
+		}, 2000);
 	},
 	
 	getVucDetails = function () {
@@ -95,6 +117,7 @@ RUXIT.vuc = (function () {
 			$("#test-table-body tr.hilite").each(function () {
 				$(this).removeClass("hilite");
 			});
+			setTimeout(pollForTests, pollInterval);
 			return;
 		}
 		var params = "vucId=" + encodeURIComponent(vucId);
@@ -115,12 +138,13 @@ RUXIT.vuc = (function () {
 			}
 			params += "&supportsF=" + encodeURIComponent(supportsF);
 		}
-		$.ajax({
+		xhr = $.ajax({
 			url: "http://localhost:7080/synthetic/dispatch/poll?" + params,
 			dataType: "json",
 			success: loadTests,
 			error: function (response, status, error) {
 				console.log("An error occurred while attempting to retrieve tests '" + name + "':" + status + (error !== undefined ? " - " + error : ""));
+				setTimeout(pollForTests, pollInterval);
 			}
 		});
 	},
@@ -174,6 +198,7 @@ RUXIT.vuc = (function () {
 				}
 			}
 		}
+		setTimeout(pollForTests, pollInterval);
 	};
 
 	return {
