@@ -1,8 +1,11 @@
 package com.compuware.ruxit.synthetic.api.crud;
 
 import static com.compuware.ruxit.synthetic.scheduler.core.util.web.WebUtil.generateErrorResponse;
+import static com.compuware.ruxit.synthetic.scheduler.core.util.web.WebUtil.generateGetAllResponse;
 import static com.compuware.ruxit.synthetic.scheduler.core.util.web.WebUtil.generateGetResponse;
 import static com.compuware.ruxit.synthetic.scheduler.core.util.web.WebUtil.getParameterAsLong;
+
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,11 +35,15 @@ public class VUControllerController {
     	//CORS header
     	response.setHeader("Access-Control-Allow-Origin", "*");
 		
-		Long vucId = getParameterAsLong(request, "id", true);
+		Long vucId = getParameterAsLong(request, "id", false);
 		if (vucId == null) {
-			return new ModelAndView(DEFAULT_VIEW);
+			return handleGetVUControllers(request, response);
 		} 
-		
+		return handleGetVUController(request, response, vucId);
+	}
+
+	private ModelAndView handleGetVUController(HttpServletRequest request,
+			HttpServletResponse response, Long vucId) throws JSONException {
 		String json = null;
 		try {
 			UIVUController vuc = service.getVUController(vucId);
@@ -50,7 +57,19 @@ public class VUControllerController {
 		}
 		request.setAttribute("json", json);
 		return new ModelAndView(DEFAULT_VIEW);
+	}
 
-
+	private ModelAndView handleGetVUControllers(HttpServletRequest request,
+			HttpServletResponse response) throws JSONException {
+		String json = null;
+		try {
+			List<UIVUController> vucs = service.getVUControllers();
+			json = generateGetAllResponse(vucs);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			json = generateErrorResponse(500, ex.getMessage());
+		}
+		request.setAttribute("json", json);
+		return new ModelAndView(DEFAULT_VIEW);
 	}
 }

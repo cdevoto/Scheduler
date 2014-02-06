@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import com.compuware.ruxit.synthetic.scheduler.core.dao.TestQueueDao;
 import com.compuware.ruxit.synthetic.scheduler.core.dao.model.Test;
 import com.compuware.ruxit.synthetic.scheduler.core.dao.model.TestPlanView;
+import com.compuware.ruxit.synthetic.scheduler.recur.scheduling.model.MaintScheduleCache;
+import com.compuware.ruxit.synthetic.scheduler.recur.scheduling.model.TestDefinition;
 
 public class EnqueueTestJob implements Job {
 	private static Logger log = LoggerFactory.getLogger(EnqueueTestJob.class);
@@ -18,6 +20,12 @@ public class EnqueueTestJob implements Job {
 	public void execute(JobExecutionContext context) throws JobExecutionException {
 		JobDataMap data = context.getJobDetail().getJobDataMap();
 		TestPlanView testPlan = (TestPlanView) data.get("data");
+		MaintScheduleCache cache = (MaintScheduleCache) data.get("cache");
+		TestDefinition testDef = cache.getTestDefinitionById(testPlan.getTestDefinitionId());
+		if (testDef != null && testDef.hasActiveMaintSchedules()) {
+			log.info("Test cancelled due to active maintenance schedule for test definition - " + testPlan);
+			return;
+		}
 		TestQueueDao dao = (TestQueueDao) data.get("dao");
 		Test test = Test.create()
 				.withTestDefinitionId(testPlan.getTestDefinitionId())

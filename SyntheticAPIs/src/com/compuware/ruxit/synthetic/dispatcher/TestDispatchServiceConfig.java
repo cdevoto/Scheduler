@@ -1,25 +1,40 @@
 package com.compuware.ruxit.synthetic.dispatcher;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.compuware.ruxit.synthetic.scheduler.core.service.TestDefinitionService;
-import com.compuware.ruxit.synthetic.scheduler.core.util.ValidationUtil;
+
 
 public class TestDispatchServiceConfig {
 	public static final long DEFAULT_WORKER_TIMEOUT = 90 * 1000;
-	public static final long DEFAULT_WORKER_POLL_INTERVAL = 500;
+	public static final long DEFAULT_WORKER_POLL_INTERVAL = 5 * 1000;
+	public static final int DEFAULT_DISPATCH_WORKERS = 10;
 	
-	private long workerTimeout;
-	private long workerPollInterval;
+	private long workerTimeout = DEFAULT_WORKER_TIMEOUT;
+	private long workerPollInterval = DEFAULT_WORKER_POLL_INTERVAL;
+	private int dispatchWorkers = DEFAULT_DISPATCH_WORKERS;
+	@Autowired
 	private TestDefinitionService service;
 	
 
-	public static Builder create () {
-		return new Builder();
+	public TestDispatchServiceConfig() {}
+	
+	public void setWorkerTimeout(long workerTimeout) {
+		if (workerTimeout > 0) {
+			this.workerTimeout = workerTimeout;
+		}
 	}
 	
-	public TestDispatchServiceConfig(Builder builder) {
-		this.workerTimeout = builder.workerTimeout;
-		this.workerPollInterval = builder.workerPollInterval;
-		this.service = builder.service;
+	public void setWorkerPollInterval(long workerPollInterval) {
+		if (workerPollInterval > 0) {
+			this.workerPollInterval = workerPollInterval;
+		}
+	}
+
+	public void setDispatchWorkers(int dispatchWorkers) {
+		if (dispatchWorkers > 0) {
+			this.dispatchWorkers = dispatchWorkers;
+		}
 	}
 
 	public long getWorkerTimeout() {
@@ -30,6 +45,10 @@ public class TestDispatchServiceConfig {
 		return workerPollInterval;
 	}
 	
+	public int getDispatchWorkers() {
+		return dispatchWorkers;
+	}
+	
 	public TestDefinitionService getService() {
 		return service;
 	}
@@ -38,6 +57,7 @@ public class TestDispatchServiceConfig {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + dispatchWorkers;
 		result = prime * result + ((service == null) ? 0 : service.hashCode());
 		result = prime * result
 				+ (int) (workerPollInterval ^ (workerPollInterval >>> 32));
@@ -55,6 +75,8 @@ public class TestDispatchServiceConfig {
 		if (getClass() != obj.getClass())
 			return false;
 		TestDispatchServiceConfig other = (TestDispatchServiceConfig) obj;
+		if (dispatchWorkers != other.dispatchWorkers)
+			return false;
 		if (service == null) {
 			if (other.service != null)
 				return false;
@@ -70,59 +92,9 @@ public class TestDispatchServiceConfig {
 	@Override
 	public String toString() {
 		return "TestDispatchServiceConfig [workerTimeout=" + workerTimeout
-				+ ", workerPollInterval=" + workerPollInterval + ", service="
+				+ ", workerPollInterval=" + workerPollInterval
+				+ ", dispatchWorkers=" + dispatchWorkers + ", service="
 				+ service + "]";
 	}
-
-
-	public static class Builder {
-		private Long workerTimeout = DEFAULT_WORKER_TIMEOUT;
-		private Long workerPollInterval = DEFAULT_WORKER_POLL_INTERVAL;
-		private TestDefinitionService service;
-
-		private Builder () {}
-
-		public Builder withWorkerTimeout(String workerTimeout) {
-		    Integer seconds = valueOf(workerTimeout);
-		    if (seconds != null) {
-		    	this.workerTimeout = seconds * 1000L;
-		    }
-			return this;
-		}
-
-		public Builder withWorkerPollInterval(String workerPollInterval) {
-		    Integer seconds = valueOf(workerPollInterval);
-		    if (seconds != null) {
-		    	this.workerPollInterval = seconds * 1000L;
-		    }
-			return this;
-		}
-		
-		public Builder withService (TestDefinitionService service) {
-			this.service = service;
-			return this;
-		}
-		
-		public TestDispatchServiceConfig build () {
-			ValidationUtil.validateNotNull("service", service);
-            return new TestDispatchServiceConfig(this);			
-		}
-		
-		private Integer valueOf (String s) {
-			if (s == null) {
-				return null;
-			}
-			try {
-				int result = Integer.parseInt(s);
-				if (result < 1) {
-					return null;
-				}
-				return result;
-			} catch (NumberFormatException ex) {
-				return null;
-			}
-		}
-	}
-	
 
 }

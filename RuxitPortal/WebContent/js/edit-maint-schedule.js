@@ -32,12 +32,12 @@ RUXIT.portal = (function () {
 		var tr, td, count, max, record, row, checkbox;
 		if (json.status !== 200) {
 			tr = $("<tr>");
-			tr.append("<td colspan=2>An error occurred while attempting to retrieve your execution schedules.</td>");
+			tr.append("<td colspan=2 style=\"width: 480px\">An error occurred while attempting to retrieve your execution schedules.</td>");
 			tBody.append(tr);
 			console.log(json.message);
 		} else if (json.data.length === 0) {
 			tr = $("<tr>");
-			tr.append("<td colspan=2>There are no execution schedules defined.</td>");
+			tr.append("<td colspan=2 style=\"width: 480px\">There are no execution schedules defined.</td>");
 			tBody.append(tr);
 			return;
 		} 
@@ -49,6 +49,7 @@ RUXIT.portal = (function () {
 			
 			tr.attr("id", row);
 			td = $("<td>");
+			td.addClass("table-select");
 			checkbox = $("<input>");
 			checkbox.attr("type", "checkbox");
 			checkbox.attr("id", "test-def-" + record.id);
@@ -67,8 +68,10 @@ RUXIT.portal = (function () {
 			td.append(checkbox);
 			tr.append(td);
 			
-			tr.append($("<td>").append(record.name));
 			td = $("<td>");
+			td.addClass("table-action");
+			td.append(record.name);
+			tr.append(td);
 			tBody.append(tr);
 		}
 

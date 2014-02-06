@@ -21,6 +21,7 @@ import com.compuware.ruxit.synthetic.scheduler.core.dao.TestDefinitionDao;
 import com.compuware.ruxit.synthetic.scheduler.core.dao.TestQueueDao;
 import com.compuware.ruxit.synthetic.scheduler.core.dao.model.MaintScheduleView;
 import com.compuware.ruxit.synthetic.scheduler.core.dao.model.TestPlanView;
+import com.compuware.ruxit.synthetic.scheduler.core.util.DateFormatUtil;
 import com.compuware.ruxit.synthetic.scheduler.recur.scheduling.TimeBasedScheduler;
 import com.compuware.ruxit.synthetic.scheduler.recur.scheduling.job.EndMaintenanceJob;
 import com.compuware.ruxit.synthetic.scheduler.recur.scheduling.job.EnqueueTestJob;
@@ -82,7 +83,7 @@ public class SchedulingUtil {
 		}
 	}
 
-	public static void scheduleTestPlan(TimeBasedScheduler scheduler, TestPlanView testPlan, TestQueueDao dao)
+	public static void scheduleTestPlan(TimeBasedScheduler scheduler, TestPlanView testPlan, TestQueueDao dao, MaintScheduleCache cache)
 			throws SchedulerException {
 		long id = testPlan.getId();
 		String rrule = testPlan.getRecurrenceRule();
@@ -91,6 +92,7 @@ public class SchedulingUtil {
 		JobDataMap dataMap = new JobDataMap();
 		dataMap.put("data", testPlan);
 		dataMap.put("dao", dao);
+		dataMap.put("cache", cache);
 		Trigger trigger = newTrigger()
 			    .withIdentity("trigger-" + id, "testPlans")
 			    .withSchedule(cronSchedule(rrule))

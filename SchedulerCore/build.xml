@@ -8,6 +8,7 @@
 	
     <target name="copy_jar" depends="create_jar">
     	<copy file="scheduler-core-1.0.0.jar" todir="../RecurrentTestScheduler/lib"/>
+    	<copy file="scheduler-core-1.0.0.jar" todir="../TestQueueWatchdog/lib"/>
     	<copy file="scheduler-core-1.0.0.jar" todir="../SyntheticAPIs/WebContent/WEB-INF/lib"/>
     </target>
 

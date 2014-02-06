@@ -29,6 +29,7 @@ import com.compuware.ruxit.synthetic.scheduler.core.dao.TestPlanDao;
 import com.compuware.ruxit.synthetic.scheduler.core.dao.TestQueueDao;
 import com.compuware.ruxit.synthetic.scheduler.core.dao.model.MaintScheduleView;
 import com.compuware.ruxit.synthetic.scheduler.core.dao.model.TestPlanView;
+import com.compuware.ruxit.synthetic.scheduler.core.util.DateFormatUtil;
 import com.compuware.ruxit.synthetic.scheduler.recur.scheduling.event.EventListener;
 import com.compuware.ruxit.synthetic.scheduler.recur.scheduling.event.EventManager;
 import com.compuware.ruxit.synthetic.scheduler.recur.scheduling.event.LastPollTime;
@@ -36,7 +37,6 @@ import com.compuware.ruxit.synthetic.scheduler.recur.scheduling.model.MaintSched
 import com.compuware.ruxit.synthetic.scheduler.recur.scheduling.model.TestDefinition;
 import com.compuware.ruxit.synthetic.scheduler.recur.scheduling.model.TestPlanCache;
 import com.compuware.ruxit.synthetic.scheduler.recur.scheduling.util.CronUtil;
-import com.compuware.ruxit.synthetic.scheduler.recur.scheduling.util.DateFormatUtil;
 import com.compuware.ruxit.synthetic.termination.LifecycleTerminationListenerAdapter;
 
 public class TestScheduleManager extends LifecycleTerminationListenerAdapter implements EventListener {
@@ -124,7 +124,7 @@ public class TestScheduleManager extends LifecycleTerminationListenerAdapter imp
 		}
 		if (testPlan.isActive() && !testPlan.isDeleted()) {
 			testPlanCache.add(testPlan);
-			scheduleTestPlan(scheduler, testPlan, testQueueDao);
+			scheduleTestPlan(scheduler, testPlan, testQueueDao, maintScheduleCache);
 		}
 	}
 
@@ -162,17 +162,18 @@ public class TestScheduleManager extends LifecycleTerminationListenerAdapter imp
 	}
 
 	private void loadTestPlans() throws SchedulerException {
-		List<TestPlanView> testPlans = testPlanDao.get(schedulerConfig.getTotalWorkers(), schedulerConfig.getWorkerNumber(), maxRows);
+		long maxLastModified = LastPollTime.get();
+		List<TestPlanView> testPlans = testPlanDao.get(schedulerConfig.getTotalWorkers(), schedulerConfig.getWorkerNumber(), maxRows, maxLastModified);
 		while (true) {
 			for (TestPlanView testPlan : testPlans) {
 				testPlanCache.add(testPlan);
-				scheduleTestPlan(scheduler, testPlan, testQueueDao);
+				scheduleTestPlan(scheduler, testPlan, testQueueDao, maintScheduleCache);
 			}
 			if (testPlans.size() == maxRows) {
 				TestPlanView last = testPlans.get(maxRows - 1);
 				long minTestDefId = last.getTestDefinitionId();
 				long minTestPlanId = last.getId();
-				testPlans = testPlanDao.get(schedulerConfig.getTotalWorkers(), schedulerConfig.getWorkerNumber(), maxRows, minTestDefId, minTestPlanId);
+				testPlans = testPlanDao.get(schedulerConfig.getTotalWorkers(), schedulerConfig.getWorkerNumber(), maxRows, maxLastModified, minTestDefId, minTestPlanId);
 			} else {
 				break;
 			}
@@ -180,8 +181,9 @@ public class TestScheduleManager extends LifecycleTerminationListenerAdapter imp
 	}
 
 	private void loadMaintenanceSchedules() throws SchedulerException {
+		long maxLastModified = LastPollTime.get();
         Map<Long, MaintScheduleView> allSchedules = new HashMap<>(); 
-		List<MaintScheduleView> schedules = scheduleDao.getMaintenanceSchedules(schedulerConfig.getTotalWorkers(), schedulerConfig.getWorkerNumber(), maxRows);
+		List<MaintScheduleView> schedules = scheduleDao.getMaintenanceSchedules(schedulerConfig.getTotalWorkers(), schedulerConfig.getWorkerNumber(), maxRows, maxLastModified);
 		while (true) {
 			for (MaintScheduleView schedule : schedules) {
 				MaintScheduleView existing = allSchedules.get(schedule.getScheduleId());
@@ -197,7 +199,7 @@ public class TestScheduleManager extends LifecycleTerminationListenerAdapter imp
 				MaintScheduleView last = schedules.get(maxRows - 1);
 				long minScheduleId = last.getScheduleId();
 				long minTestDefId = last.getTestDefinitionIds().get(0);
-				schedules = scheduleDao.getMaintenanceSchedules(schedulerConfig.getTotalWorkers(), schedulerConfig.getWorkerNumber(), maxRows, minScheduleId, minTestDefId);
+				schedules = scheduleDao.getMaintenanceSchedules(schedulerConfig.getTotalWorkers(), schedulerConfig.getWorkerNumber(), maxRows, maxLastModified, minScheduleId, minTestDefId);
 			} else {
 				break;
 			}

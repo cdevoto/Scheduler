@@ -5,6 +5,7 @@ body {
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 62.5%;
   line-height: 1.5em;
+  height: 100%;
 }
 h1,
 h2,
@@ -212,28 +213,38 @@ body.midgrey {
 .fullwidth {
   float: left;
   width: 100%;
-  min-width: 985px;
+  min-width: 1050px;
+  height: 100%;
   clear: both;
   position: relative;
   z-index: 2;
 }
 
 .fullwidth.gray {
-	background-color: #f6f6f8;
+	background-color: #B0E0E6;
+	/*background-color: #f6f6f8;*/
 }
 
 .central {
   margin: 0 auto;
-  width: 985px;
+  padding: 0 25px 25px 25px;
+  width: 1000px;
   clear: both;
   position: relative;
   z-index: 2;
+  background-color: white;
+  height: 100%;
 }
+
+.central.vuc-list {
+  width: 850px;
+}
+
 hgroup {
   float: left;
   width: 95%;
   margin: 0;
-  padding: 0 0 20px 0;
+  padding: 0 0 0px 0;
   border-bottom: 1px solid #e6e6e8;
   position: relative;
 }
@@ -261,7 +272,7 @@ hgroup h1.singleline {
 }
 hgroup h2 {
   font-size: 1.5em;
-  margin-bottom: 20px !important;
+  margin-bottom: 25px !important;
   line-height: 1.4em;
   color: #adb3b9;
 }

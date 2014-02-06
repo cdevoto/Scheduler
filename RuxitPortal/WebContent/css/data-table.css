@@ -55,11 +55,38 @@ d0dafd > e1e3eb
 	width: 80px !important;
 }
 
-#schedule-table th.table-action, td.table-action {
-	width: 220px;
+#schedule-table * th.table-label, #schedule-table * td.table-label {
+	width: 240px !important;
 }
 
-.data-table th.table-select, td.table-select {
-	width: 25px;
+#schedule-table * th.table-action, #schedule-table * td.table-action {
+	width: 240px !important;
 }
 
+.data-table * th.table-select, .data-table * td.table-select {
+	width: 25px !important;
+}
+
+#select-schedule-table * th.table-action, #select-schedule-table * td.table-action {
+	width: 455px !important;
+}
+
+#schedule-table thead, #schedule-table tbody {
+	display: block;
+	width: 480px;
+}
+
+#schedule-table-body {
+	height: 262px;
+	overflow: auto;
+}
+
+#select-schedule-table thead, #select-schedule-table tbody {
+	display: block;
+	width: 480px;
+}
+
+#select-schedule-table-body {
+	height: 262px;
+	overflow: auto;
+}

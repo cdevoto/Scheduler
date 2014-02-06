@@ -440,4 +440,9 @@ public class LocalTestDefinitionService implements TestDefinitionService {
 	    return uiTestDefinitions;
 	}
 
+	@Override
+	public List<UIVUController> getVUControllers() {
+		return vucService.getVUControllers();
+	}
+
 }

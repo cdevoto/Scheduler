@@ -8,8 +8,8 @@ public class LastPollTime {
 	private volatile long prevLastPollTime;
 	private volatile long lastPollTime;
 
-	public static final void snapshot () {
-		InstanceHolder.INSTANCE.doSnapshot();
+	public static final long snapshot () {
+		return InstanceHolder.INSTANCE.doSnapshot();
 	}
 	
 	public static final long get () {
@@ -24,9 +24,9 @@ public class LastPollTime {
 		doSnapshot();
 	}
 	
-	private void doSnapshot() {
+	private long doSnapshot() {
 		this.prevLastPollTime = this.lastPollTime;
-		this.lastPollTime = System.currentTimeMillis();
+		return this.lastPollTime = System.currentTimeMillis();
 	}
 	
 	private void doReset() {

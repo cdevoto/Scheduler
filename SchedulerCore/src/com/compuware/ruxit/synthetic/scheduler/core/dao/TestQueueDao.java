@@ -10,5 +10,6 @@ public interface TestQueueDao {
 	public long push(Test test);
 	public List<TestView> poll(long vucId, long supportsF, int maxRows);	
 	public Test getById(long id);
-
+	public void cancelTestsEnqueuedBefore(long enqueuedAt);
+	public void cancelTestsDispatchedBefore(long dispatchedAt);
 }

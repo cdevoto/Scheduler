@@ -4,23 +4,6 @@
   <display-name>Synthetic API's</display-name>
 
   <context-param>
-      <param-name>dispatchWorkers</param-name>
-      <param-value>10</param-value>
-  </context-param>
-  
-  <context-param>
-      <param-name>workerTimeout</param-name>
-      <param-value>90</param-value>
-  </context-param>
-
-<!-- 
-  <context-param>
-      <param-name>workerPollInterval</param-name>
-      <param-value>5</param-value>
-  </context-param>
- -->
- 
-  <context-param>
       <param-name>contextConfigLocation</param-name>
       <param-value>/WEB-INF/spring/app-context.xml</param-value>
   </context-param>

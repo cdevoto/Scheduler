@@ -475,9 +475,9 @@ public class Predictor {
 	}
 
 	/**
-	 * It returns the next matching moment as a {@link Date} object.
+	 * It returns the previous matching moment as a {@link Date} object.
 	 * 
-	 * @return The next matching moment as a {@link Date} object.
+	 * @return The previous matching moment as a {@link Date} object.
 	 */
 	public synchronized Date prevMatchingDate() {
 		return new Date(prevMatchingTime());

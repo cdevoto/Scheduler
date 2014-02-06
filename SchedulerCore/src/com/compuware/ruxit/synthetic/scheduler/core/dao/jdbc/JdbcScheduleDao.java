@@ -159,29 +159,29 @@ public class JdbcScheduleDao implements ScheduleDao {
 	
 	@Override
 	public List<MaintScheduleView> getMaintenanceSchedules(int totalWorkers,
-			int workerNum, int maxRows) {
-		List<MaintScheduleView> schedules = getMaintenanceSchedules.call(totalWorkers, workerNum, maxRows, null, null, null);
+			int workerNum, int maxRows, long maxLastModified) {
+		List<MaintScheduleView> schedules = getMaintenanceSchedules.call(totalWorkers, workerNum, maxRows, maxLastModified, null, null, null);
 		return schedules;
 	}
 
 	@Override
 	public List<MaintScheduleView> getMaintenanceSchedules(int totalWorkers,
-			int workerNum, int maxRows, Long minScheduleId, Long minTestDefId) {
-		List<MaintScheduleView> schedules = getMaintenanceSchedules.call(totalWorkers, workerNum, maxRows, minScheduleId, minTestDefId, null);
+			int workerNum, int maxRows, long maxLastModified, long minScheduleId, long minTestDefId) {
+		List<MaintScheduleView> schedules = getMaintenanceSchedules.call(totalWorkers, workerNum, maxRows, maxLastModified, minScheduleId, minTestDefId, null);
 		return schedules;
 	}
 
 	@Override
 	public List<MaintScheduleView> getMaintenanceSchedules(int totalWorkers,
-			int workerNum, int maxRows, Long lastModified) {
-		List<MaintScheduleView> schedules = getMaintenanceSchedules.call(totalWorkers, workerNum, maxRows, null, null, lastModified);
+			int workerNum, int maxRows, long maxLastModified, long minLastModified) {
+		List<MaintScheduleView> schedules = getMaintenanceSchedules.call(totalWorkers, workerNum, maxRows, maxLastModified, null, null, minLastModified);
 		return schedules;
 	}
 
 	@Override
 	public List<MaintScheduleView> getMaintenanceSchedules(int totalWorkers,
-			int workerNum, int maxRows, Long minScheduleId, Long minTestDefId, Long lastModified) {
-		List<MaintScheduleView> schedules = getMaintenanceSchedules.call(totalWorkers, workerNum, maxRows, minScheduleId, minTestDefId, lastModified);
+			int workerNum, int maxRows, long maxLastModified, long minScheduleId, long minTestDefId, long minlastModified) {
+		List<MaintScheduleView> schedules = getMaintenanceSchedules.call(totalWorkers, workerNum, maxRows, maxLastModified, minScheduleId, minTestDefId, minlastModified);
 		return schedules;
 	}
 
@@ -219,6 +219,7 @@ public class JdbcScheduleDao implements ScheduleDao {
 			declareParameter(new SqlParameter("total_workers", Types.SMALLINT));
 			declareParameter(new SqlParameter("worker_num", Types.SMALLINT));
 			declareParameter(new SqlParameter("max_rows", Types.SMALLINT));
+			declareParameter(new SqlParameter("max_last_modified", Types.TIMESTAMP));
 			declareParameter(new SqlParameter("min_schedule_id", Types.BIGINT));
 			declareParameter(new SqlParameter("min_test_def_id", Types.BIGINT));
 			declareParameter(new SqlParameter("min_last_modified", Types.TIMESTAMP));
@@ -226,18 +227,20 @@ public class JdbcScheduleDao implements ScheduleDao {
 			compile();
 		}
 		
-		public synchronized List<MaintScheduleView> call(int totalWorkers, int workerNum, int maxRows, Long minScheduleId, Long minTestDefId, Long minLastModified) {
+		public synchronized List<MaintScheduleView> call(int totalWorkers, int workerNum, int maxRows, long maxLastModified, Long minScheduleId, Long minTestDefId, Long minLastModified) {
 			Map<String, Object> inParameters = new HashMap<>();
-			Timestamp lastMod = null;
+			Timestamp maxLastMod = new Timestamp(maxLastModified);
+			Timestamp minlastMod = null;
 			if (minLastModified != null) {
-				lastMod = new Timestamp(minLastModified);
+				minlastMod = new Timestamp(minLastModified);
 			}
 			inParameters.put("total_workers", totalWorkers);
 			inParameters.put("worker_num", workerNum);
 			inParameters.put("max_rows", maxRows);
+			inParameters.put("max_last_modified", maxLastMod);
 			inParameters.put("min_schedule_id", minScheduleId);
 			inParameters.put("min_test_def_id", minTestDefId);
-			inParameters.put("min_last_modified", lastMod);
+			inParameters.put("min_last_modified", minlastMod);
 			execute(inParameters);
 
 			Map<String, Object> resultMap = execute(inParameters);

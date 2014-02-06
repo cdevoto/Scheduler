@@ -3,6 +3,7 @@ package com.compuware.ruxit.synthetic.scheduler.core.service.local;
 import static com.compuware.ruxit.synthetic.scheduler.core.service.util.AbilityFlagUtil.decodeAbilityFlags;
 import static com.compuware.ruxit.synthetic.scheduler.core.util.ExceptionUtil.launderThrowable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Callable;
@@ -137,5 +138,16 @@ public class LocalVUControllerService implements VUControllerService {
 		}
     	
     }
+
+	@Override
+	public List<UIVUController> getVUControllers() {
+		List<Long> vucIds = vucDao.getAllIds();
+		List<UIVUController> vucs = new ArrayList<>(vucIds.size()); 
+		for (long vucId : vucIds) {
+			UIVUController vuc = getVUController(vucId);
+			vucs.add(vuc);
+		}
+		return vucs;
+	}
 
 }

@@ -2,6 +2,7 @@ package com.compuware.ruxit.synthetic.scheduler.core.dao.jdbc;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -23,7 +24,21 @@ public class JdbcVUControllerDao implements VUControllerDao {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public VUController getById(final long id) {
+	public List<Long> getAllIds () {
+		List<Long> vucIds = jdbcTemplate.query("SELECT vuc_id FROM vu_controller ORDER BY vuc_id", 
+				new Object [] {}, 
+				new VUControllerIdMapper());
+		return vucIds;
+	}
+
+	public List<VUController> getAll () {
+		List<VUController> vucs = jdbcTemplate.query("SELECT vuc_id, supports_f, location_id FROM vu_controller ORDER BY vuc_id", 
+				new Object [] {}, 
+				new VUControllerMapper());
+		return vucs;
+	}
+
+	public VUController getById(final long id) {
 		try {
 			VUController vuc = jdbcTemplate.queryForObject(
 			        "SELECT vuc_id, supports_f, location_id FROM vu_controller WHERE vuc_id = ?",
@@ -51,5 +66,14 @@ public class JdbcVUControllerDao implements VUControllerDao {
 		
 	}
 	
+	private static class VUControllerIdMapper implements RowMapper<Long> {
+
+		@Override
+		public Long mapRow(ResultSet rs, int rowNum)
+				throws SQLException {
+			return rs.getLong("vuc_id");
+		}
+		
+	}
 
 }

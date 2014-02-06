@@ -409,9 +409,10 @@ public class Test {
 		SCRIPT_DELETED(3),
 		TEST_DEF_DELETED(4),
 		INACTIVE(5),
-		TIMEOUT(6);
+		ENQUEUE_EXPIRE(6),
+		DISPATCH_EXPIRE(7);
 	
-		private static final CancelledStatus [] all = {MAINT_WINDOW, SUSPENDED, SCRIPT_DELETED, TEST_DEF_DELETED, INACTIVE, TIMEOUT};
+		private static final CancelledStatus [] all = {MAINT_WINDOW, SUSPENDED, SCRIPT_DELETED, TEST_DEF_DELETED, INACTIVE, ENQUEUE_EXPIRE, DISPATCH_EXPIRE};
 		private static final Map<Integer, CancelledStatus> map = new HashMap<>();
 		
 		static {

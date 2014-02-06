@@ -34,29 +34,29 @@ public class JdbcTestPlanDao implements TestPlanDao {
     }
 
 	@Override
-	public List<TestPlanView> get(int totalWorkers, int workerNum, int maxRows) {
-		List<TestPlanView> testPlans = getTestPlans.call(totalWorkers, workerNum, maxRows, null, null, null);
+	public List<TestPlanView> get(int totalWorkers, int workerNum, int maxRows, long maxLastModified) {
+		List<TestPlanView> testPlans = getTestPlans.call(totalWorkers, workerNum, maxRows, maxLastModified, null, null, null);
 		return testPlans;
 	}
 
 	@Override
-	public List<TestPlanView> get(int totalWorkers, int workerNum, int maxRows,
+	public List<TestPlanView> get(int totalWorkers, int workerNum, int maxRows, long maxLastModified, 
 			long minTestDefId, long minTestPlanId) {
-		List<TestPlanView> testPlans = getTestPlans.call(totalWorkers, workerNum, maxRows, minTestDefId, minTestPlanId, null);
+		List<TestPlanView> testPlans = getTestPlans.call(totalWorkers, workerNum, maxRows, maxLastModified, minTestDefId, minTestPlanId, null);
 		return testPlans;
 	}
 
 	@Override
-	public List<TestPlanView> get(int totalWorkers, int workerNum, int maxRows,
+	public List<TestPlanView> get(int totalWorkers, int workerNum, int maxRows, long maxLastModified,
 			long minLastModified) {
-		List<TestPlanView> testPlans = getTestPlans.call(totalWorkers, workerNum, maxRows, null, null, minLastModified);
+		List<TestPlanView> testPlans = getTestPlans.call(totalWorkers, workerNum, maxRows, maxLastModified, null, null, minLastModified);
 		return testPlans;
 	}
 
 	@Override
-	public List<TestPlanView> get(int totalWorkers, int workerNum, int maxRows,
+	public List<TestPlanView> get(int totalWorkers, int workerNum, int maxRows, long maxLastModified,
 			long minTestDefId, long minTestPlanId, long minLastModified) {
-		List<TestPlanView> testPlans = getTestPlans.call(totalWorkers, workerNum, maxRows, minTestDefId, minTestPlanId, minLastModified);
+		List<TestPlanView> testPlans = getTestPlans.call(totalWorkers, workerNum, maxRows, maxLastModified, minTestDefId, minTestPlanId, minLastModified);
 		return testPlans;
 	}
 
@@ -80,6 +80,7 @@ public class JdbcTestPlanDao implements TestPlanDao {
 			declareParameter(new SqlParameter("total_workers", Types.SMALLINT));
 			declareParameter(new SqlParameter("worker_num", Types.SMALLINT));
 			declareParameter(new SqlParameter("max_rows", Types.SMALLINT));
+			declareParameter(new SqlParameter("max_last_modified", Types.TIMESTAMP));
 			declareParameter(new SqlParameter("min_test_def_id", Types.BIGINT));
 			declareParameter(new SqlParameter("min_test_plan_id", Types.BIGINT));
 			declareParameter(new SqlParameter("min_last_modified", Types.TIMESTAMP));
@@ -87,18 +88,20 @@ public class JdbcTestPlanDao implements TestPlanDao {
 			compile();
 		}
 		
-		public List<TestPlanView> call(int totalWorkers, int workerNum, int maxRows, Long minTestDefId, Long minTestPlanId, Long minLastModified) {
+		public List<TestPlanView> call(int totalWorkers, int workerNum, int maxRows, long maxLastModified, Long minTestDefId, Long minTestPlanId, Long minLastModified) {
 			Map<String, Object> inParameters = new HashMap<>();
-			Timestamp lastMod = null;
+			Timestamp maxLastMod = new Timestamp(maxLastModified);
+			Timestamp minLastMod = null;
 			if (minLastModified != null) {
-				lastMod = new Timestamp(minLastModified);
+				minLastMod = new Timestamp(minLastModified);
 			}
 			inParameters.put("total_workers", totalWorkers);
 			inParameters.put("worker_num", workerNum);
 			inParameters.put("max_rows", maxRows);
+			inParameters.put("max_last_modified", maxLastMod);
 			inParameters.put("min_test_def_id", minTestDefId);
 			inParameters.put("min_test_plan_id", minTestPlanId);
-			inParameters.put("min_last_modified", lastMod);
+			inParameters.put("min_last_modified", minLastMod);
 			
 			Map<String, Object> resultMap = execute(inParameters);
 			@SuppressWarnings("unchecked")

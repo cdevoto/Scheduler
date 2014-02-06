@@ -1,24 +1,36 @@
 SET GLOBAL time_zone = '+0:00';
+# Enable query logging through console
+# SET GLOBAL general_log = 1;
+# SET GLOBAL log_output = 'table';
 
+# View query log
+# SELECT * FROM mysql.general_log
+
+# Disable query logging
+# SET GLOBAL general_log = 0;
+
+# Delete data from query log
+# TRUNCATE TABLE mysql.general_log
+
+
+DROP TABLE IF EXISTS test_queue;
+DROP TABLE IF EXISTS test_definition_lcp;
+DROP TABLE IF EXISTS vu_controller_lcp;
+DROP TABLE IF EXISTS script_type_player;
+DROP TABLE IF EXISTS test_definition_schedule;
+DROP TABLE IF EXISTS script_type_ability_flag;
+DROP TABLE IF EXISTS test_plan;
+DROP TABLE IF EXISTS test_definition;
+DROP TABLE IF EXISTS vu_controller;
+DROP TABLE IF EXISTS lcp;
 DROP TABLE IF EXISTS location;
 DROP TABLE IF EXISTS carrier;
 DROP TABLE IF EXISTS player;
-DROP TABLE IF EXISTS script_type;
-DROP TABLE IF EXISTS script_type_player;
-DROP TABLE IF EXISTS ability_flag;
-DROP TABLE IF EXISTS ability_flag_level;
-DROP TABLE IF EXISTS lcp;
-DROP TABLE IF EXISTS vu_controller;
-DROP TABLE IF EXISTS vu_controller_lcp;
 DROP TABLE IF EXISTS script;
-DROP TABLE IF EXISTS test_definition;
-DROP TABLE IF EXISTS test_definition_lcp;
+DROP TABLE IF EXISTS script_type;
+DROP TABLE IF EXISTS ability_flag;
 DROP TABLE IF EXISTS schedule;
 DROP TABLE IF EXISTS timezone;
-DROP TABLE IF EXISTS test_definition_schedule;
-DROP TABLE IF EXISTS test_plan;
-DROP TABLE IF EXISTS script_type_ability_flag;
-DROP TABLE IF EXISTS test_queue;
 DROP TABLE IF EXISTS scheduler;
 
 DROP VIEW IF EXISTS test_plan_vw;
@@ -29,7 +41,6 @@ DROP VIEW IF EXISTS test_definition_lcp_vw;
 DROP VIEW IF EXISTS test_queue_vw;
 DROP VIEW IF EXISTS vu_controller_lcp_vw;
 DROP VIEW IF EXISTS test_definition_vuc_vw;
-DROP VIEW IF EXISTS scheduler_vw;
 
 DROP PROCEDURE IF EXISTS filter_lcps;
 DROP PROCEDURE IF EXISTS delete_script;
@@ -45,28 +56,28 @@ CREATE TABLE location (
 	name VARCHAR(100) NOT NULL,
    CONSTRAINT pk_location PRIMARY KEY (location_id),
    UNIQUE INDEX idx_location_1 (name)
-);
+) ENGINE=InnoDB;
 
 CREATE TABLE carrier (
 	carrier_id  BIGINT UNSIGNED AUTO_INCREMENT,
 	name VARCHAR(100) NOT NULL,
    CONSTRAINT pk_carrier PRIMARY KEY (carrier_id),
    UNIQUE INDEX idx_carrier_1 (name)
-);
+) ENGINE=InnoDB;
 
 CREATE TABLE player (
 	player_id  BIGINT UNSIGNED AUTO_INCREMENT,
 	name VARCHAR(100) NOT NULL,
    CONSTRAINT pk_player PRIMARY KEY (player_id),
    UNIQUE INDEX idx_player_1 (name)
-);
+) ENGINE=InnoDB;
 
 CREATE TABLE script_type (
 	script_type_id  BIGINT UNSIGNED AUTO_INCREMENT,
 	name VARCHAR(100) NOT NULL,
    CONSTRAINT pk_script_type PRIMARY KEY (script_type_id),
    UNIQUE INDEX idx_script_type_1 (name)
-);
+) ENGINE=InnoDB;
 
 CREATE TABLE script_type_player (
 	script_type_player_id  BIGINT UNSIGNED AUTO_INCREMENT,
@@ -74,8 +85,14 @@ CREATE TABLE script_type_player (
 	player_id BIGINT UNSIGNED NOT NULL,
    CONSTRAINT pk_script_type_player PRIMARY KEY (script_type_player_id),
    INDEX idx_script_type_player_1 (script_type_id),
-   INDEX idx_script_type_player_2 (player_id)
-);
+   INDEX idx_script_type_player_2 (player_id),
+   FOREIGN KEY (script_type_id) 
+        REFERENCES script_type(script_type_id)
+        ON DELETE CASCADE,
+   FOREIGN KEY (player_id) 
+        REFERENCES player(player_id)
+        ON DELETE CASCADE
+) ENGINE=InnoDB;
 
 CREATE TABLE script (
 	script_id  BIGINT UNSIGNED AUTO_INCREMENT,
@@ -90,8 +107,11 @@ CREATE TABLE script (
    INDEX idx_script_1 (script_type_id),
    INDEX idx_script_2 (tenant_id),
    INDEX idx_script_3 (active),
-   INDEX idx_script_4 (last_modified)
-);
+   INDEX idx_script_4 (last_modified),
+   FOREIGN KEY (script_type_id) 
+        REFERENCES script_type(script_type_id)
+        ON DELETE RESTRICT
+) ENGINE=InnoDB;
 
 CREATE TABLE ability_flag (
 	ability_flag_id  BIGINT UNSIGNED AUTO_INCREMENT,
@@ -101,7 +121,7 @@ CREATE TABLE ability_flag (
    CONSTRAINT pk_ability_flag PRIMARY KEY (ability_flag_id),
    UNIQUE INDEX idx_ability_flag_1 (description),
    INDEX idx_ability_flag_2 (ability_flag_level_id)
-);
+) ENGINE=InnoDB;
 
 CREATE TABLE script_type_ability_flag (
 	script_type_ability_flag_id  BIGINT UNSIGNED AUTO_INCREMENT,
@@ -110,15 +130,14 @@ CREATE TABLE script_type_ability_flag (
    CONSTRAINT pk_script_type_ability_flag PRIMARY KEY (script_type_ability_flag_id),
    UNIQUE INDEX idx_script_type_ability_flag_1 (ability_flag_id, script_type_id),
    INDEX idx_script_type_ability_flag_2 (ability_flag_id),
-   INDEX idx_script_type_ability_flag_3 (script_type_id)
-);
-
-CREATE TABLE ability_flag_level (
-	ability_flag_level_id  BIGINT UNSIGNED AUTO_INCREMENT,
-	description VARCHAR(100) NOT NULL,
-   CONSTRAINT pk_ability_flag_level PRIMARY KEY (ability_flag_level_id),
-   UNIQUE INDEX idx_ability_flag_level_1 (description)
-);
+   INDEX idx_script_type_ability_flag_3 (script_type_id),
+   FOREIGN KEY (script_type_id) 
+        REFERENCES script_type(script_type_id)
+        ON DELETE CASCADE,
+   FOREIGN KEY (ability_flag_id) 
+        REFERENCES ability_flag(ability_flag_id)
+        ON DELETE CASCADE
+) ENGINE=InnoDB;
 
 CREATE TABLE lcp (
 	lcp_id  BIGINT UNSIGNED AUTO_INCREMENT,
@@ -129,8 +148,17 @@ CREATE TABLE lcp (
    UNIQUE INDEX idx_lcp_1 (location_id, carrier_id, player_id),
    INDEX idx_lcp_2 (location_id),
    INDEX idx_lcp_3 (carrier_id),
-   INDEX idx_lcp_4 (player_id)
-);
+   INDEX idx_lcp_4 (player_id),
+   FOREIGN KEY (location_id) 
+        REFERENCES location(location_id)
+        ON DELETE CASCADE,
+   FOREIGN KEY (carrier_id) 
+        REFERENCES carrier(carrier_id)
+        ON DELETE CASCADE,
+   FOREIGN KEY (player_id) 
+        REFERENCES player(player_id)
+        ON DELETE CASCADE
+) ENGINE=InnoDB;
 
 CREATE TABLE vu_controller (
 	vuc_id  BIGINT UNSIGNED AUTO_INCREMENT,
@@ -138,8 +166,11 @@ CREATE TABLE vu_controller (
 	location_id BIGINT UNSIGNED NOT NULL,
    CONSTRAINT pk_vu_controller PRIMARY KEY (vuc_id),
    INDEX idx_vu_controller_1 (supports_f),
-   INDEX idx_vu_controller_2 (location_id)
-);
+   INDEX idx_vu_controller_2 (location_id),
+   FOREIGN KEY (location_id) 
+        REFERENCES location(location_id)
+        ON DELETE RESTRICT
+ ) ENGINE=InnoDB;
 
 CREATE TABLE vu_controller_lcp (
 	vuc_lcp_id  BIGINT UNSIGNED AUTO_INCREMENT,
@@ -147,8 +178,14 @@ CREATE TABLE vu_controller_lcp (
 	lcp_id BIGINT UNSIGNED NOT NULL,
    CONSTRAINT pk_vu_controller_lcp PRIMARY KEY (vuc_lcp_id),
    INDEX idx_vu_controller_lcp_1 (vuc_id),
-   INDEX idx_vu_controller_lcp_2 (lcp_id)
-);
+   INDEX idx_vu_controller_lcp_2 (lcp_id),
+   FOREIGN KEY (lcp_id) 
+        REFERENCES lcp(lcp_id)
+        ON DELETE CASCADE,
+   FOREIGN KEY (vuc_id) 
+        REFERENCES vu_controller(vuc_id)
+        ON DELETE CASCADE
+) ENGINE=InnoDB;
 
 CREATE TABLE test_definition (
 	test_definition_id  BIGINT UNSIGNED AUTO_INCREMENT,
@@ -169,8 +206,11 @@ CREATE TABLE test_definition (
    INDEX idx_test_definition_5 (maint_suspended),
    INDEX idx_test_definition_6 (active),
    INDEX idx_test_definition_7 (deleted),
-   INDEX idx_test_definition_8 (last_modified)
-);
+   INDEX idx_test_definition_8 (last_modified),
+   FOREIGN KEY (script_id) 
+        REFERENCES script(script_id)
+        ON DELETE CASCADE
+) ENGINE=InnoDB;
 
 CREATE TABLE test_definition_lcp (
 	test_definition_lcp_id  BIGINT UNSIGNED AUTO_INCREMENT,
@@ -178,8 +218,14 @@ CREATE TABLE test_definition_lcp (
 	lcp_id BIGINT UNSIGNED NOT NULL,
    CONSTRAINT pk_test_definition_lcp PRIMARY KEY (test_definition_lcp_id),
    INDEX idx_test_definition_lcp_1 (test_definition_id),
-   INDEX idx_test_definition_lcp_2 (lcp_id)
-);
+   INDEX idx_test_definition_lcp_2 (lcp_id),
+   FOREIGN KEY (test_definition_id) 
+        REFERENCES test_definition(test_definition_id)
+        ON DELETE CASCADE,
+   FOREIGN KEY (lcp_id) 
+        REFERENCES lcp(lcp_id)
+        ON DELETE CASCADE
+) ENGINE=InnoDB;
 
 CREATE TABLE test_plan (
 	test_plan_id  BIGINT UNSIGNED AUTO_INCREMENT,
@@ -190,21 +236,29 @@ CREATE TABLE test_plan (
    CONSTRAINT pk_test_plan PRIMARY KEY (test_plan_id),
    UNIQUE INDEX idx_test_plan_1 (test_definition_id, lcp_id),
    INDEX idx_test_plan_2 (test_definition_id),
-   INDEX idx_test_plan_3 (lcp_id)
-);
+   INDEX idx_test_plan_3 (lcp_id),
+   FOREIGN KEY (test_definition_id) 
+        REFERENCES test_definition(test_definition_id)
+        ON DELETE CASCADE,
+   FOREIGN KEY (lcp_id) 
+        REFERENCES lcp(lcp_id)
+        ON DELETE CASCADE
+) ENGINE=InnoDB;
 
 CREATE TABLE timezone (
 	timezone_id  BIGINT UNSIGNED AUTO_INCREMENT,
 	name VARCHAR(40) NOT NULL,
    CONSTRAINT pk_timezone PRIMARY KEY (timezone_id),
    UNIQUE INDEX idx_timezone_1 (name)
-);
+) ENGINE=InnoDB;
 
 CREATE TABLE schedule (
 	schedule_id  BIGINT UNSIGNED AUTO_INCREMENT,
 	tenant_id BIGINT UNSIGNED NOT NULL,
 	timezone_id BIGINT UNSIGNED NOT NULL DEFAULT 1,
 	name VARCHAR(100) NOT NULL,
+	start_date TIMESTAMP NULL,
+	end_date TIMESTAMP NULL,
 	rrule VARCHAR(150) NOT NULL,
 	duration MEDIUMINT UNSIGNED,
 	is_maintenance BOOLEAN NOT NULL DEFAULT 0,
@@ -216,8 +270,11 @@ CREATE TABLE schedule (
    INDEX idx_schedule_2 (name),
    INDEX idx_schedule_3 (is_maintenance),
    INDEX idx_schedule_4 (deleted),
-   INDEX idx_schedule_5 (last_modified)
-);
+   INDEX idx_schedule_5 (last_modified),
+   FOREIGN KEY (timezone_id) 
+        REFERENCES timezone(timezone_id)
+        ON DELETE RESTRICT
+) ENGINE=InnoDB;
 
 CREATE TABLE test_definition_schedule (
 	test_definition_schedule_id  BIGINT UNSIGNED AUTO_INCREMENT,
@@ -226,11 +283,18 @@ CREATE TABLE test_definition_schedule (
    CONSTRAINT pk_test_definition_schedule PRIMARY KEY (test_definition_schedule_id),
    UNIQUE INDEX idx_test_group_schedule_1 (test_definition_id, schedule_id),
    INDEX idx_test_group_schedule_2 (test_definition_id),
-   INDEX idx_test_group_schedule_3 (schedule_id)
-);
+   INDEX idx_test_group_schedule_3 (schedule_id),
+   FOREIGN KEY (test_definition_id) 
+        REFERENCES test_definition(test_definition_id)
+        ON DELETE CASCADE,
+   FOREIGN KEY (schedule_id) 
+        REFERENCES schedule(schedule_id)
+        ON DELETE CASCADE
+) ENGINE=InnoDB;
 
 CREATE TABLE test_queue (
 	test_queue_id  BIGINT UNSIGNED AUTO_INCREMENT,
+	test_queue_ref_id BIGINT UNSIGNED, # reference to a different test; used for test retry logic
 	test_definition_id BIGINT UNSIGNED NOT NULL,
 	script_id BIGINT UNSIGNED NOT NULL,
 	tenant_id BIGINT UNSIGNED NOT NULL,
@@ -256,15 +320,22 @@ CREATE TABLE test_queue (
    INDEX idx_test_queue_8 (dispatched_at),
    INDEX idx_test_queue_9 (completed_at),
    INDEX idx_test_queue_10 (status),
-   INDEX idx_test_queue_11 (completed_status)
-);
+   INDEX idx_test_queue_11 (completed_status),
+   INDEX idx_test_queue_12 (test_queue_ref_id),
+   FOREIGN KEY (test_definition_id) 
+        REFERENCES test_definition(test_definition_id)
+        ON DELETE CASCADE,
+   FOREIGN KEY (script_id) 
+        REFERENCES script(script_id)
+        ON DELETE CASCADE
+) ENGINE=InnoDB;
 
 CREATE TABLE scheduler (
 	scheduler_id  BIGINT UNSIGNED AUTO_INCREMENT,
 	worker_num MEDIUMINT UNSIGNED NOT NULL,
    CONSTRAINT pk_scheduler PRIMARY KEY (scheduler_id),
    UNIQUE INDEX worker_num (worker_num)
-);
+) ENGINE=InnoDB;
 
 
 CREATE VIEW vu_controller_lcp_vw AS
@@ -389,13 +460,6 @@ CREATE VIEW test_definition_vuc_vw AS
         vu_controller_lcp.vuc_id = vu_controller.vuc_id AND 
         vu_controller.supports_f & (test_definition.requires_f | script.requires_f) = test_definition.requires_f | script.requires_f; 
   
-CREATE VIEW scheduler_vw AS
-    SELECT 
-        scheduler_id, 
-        worker_num, 
-        COUNT(scheduler_id) AS total_workers 
-    FROM scheduler;        
-        
 DELIMITER // 
 CREATE PROCEDURE filter_lcps (IN script_id BIGINT UNSIGNED, IN requires_f BIGINT UNSIGNED) 
 BEGIN 
@@ -486,7 +550,7 @@ BEGIN
         WHERE schedule.schedule_id = schedule_id;        
 END // 
 
-CREATE PROCEDURE get_test_plans (IN total_workers SMALLINT UNSIGNED, IN worker_num SMALLINT UNSIGNED, IN max_rows SMALLINT UNSIGNED, IN min_test_def_id BIGINT UNSIGNED, IN min_test_plan_id BIGINT UNSIGNED, IN min_last_modified TIMESTAMP) 
+CREATE PROCEDURE get_test_plans (IN total_workers SMALLINT UNSIGNED, IN worker_num SMALLINT UNSIGNED, IN max_rows SMALLINT UNSIGNED, IN max_last_modified TIMESTAMP, IN min_test_def_id BIGINT UNSIGNED, IN min_test_plan_id BIGINT UNSIGNED, IN min_last_modified TIMESTAMP) 
 BEGIN
 	IF min_test_def_id IS NOT NULL AND min_test_plan_id IS NOT NULL THEN
 	    IF min_last_modified IS NOT NULL THEN
@@ -495,7 +559,8 @@ BEGIN
 		        WHERE test_definition_id % total_workers = worker_num AND
 		              (test_definition_id > min_test_def_id OR 
 		              test_definition_id > min_test_def_id AND test_plan_id > min_test_plan_id) AND
-		              last_modified >= min_last_modified
+		              last_modified >= min_last_modified AND
+		              last_modified < max_last_modified
 		        ORDER BY test_definition_id ASC, test_plan_id ASC
 		        LIMIT max_rows;
 	    ELSE
@@ -504,6 +569,7 @@ BEGIN
 		        WHERE test_definition_id % total_workers = worker_num AND
 		              (test_definition_id > min_test_def_id OR 
 		              test_definition_id > min_test_def_id AND test_plan_id > min_test_plan_id) AND
+		              last_modified < max_last_modified AND
 		              deleted = false AND
 		              active = true
 		        ORDER BY test_definition_id ASC, test_plan_id ASC
@@ -514,13 +580,15 @@ BEGIN
 		    SELECT * 
 		        FROM test_plan_vw 
 		        WHERE test_definition_id % total_workers = worker_num AND
-		              last_modified >= min_last_modified
+		              last_modified >= min_last_modified AND
+		              last_modified < max_last_modified		              
 		        ORDER BY test_definition_id ASC, test_plan_id ASC
 		        LIMIT max_rows;
 	    ELSE
 		    SELECT * 
 		        FROM test_plan_vw 
 		        WHERE test_definition_id % total_workers = worker_num AND
+		              last_modified < max_last_modified AND
 		              deleted = false AND
 		              active = true
 		        ORDER BY test_definition_id ASC, test_plan_id ASC
@@ -529,7 +597,7 @@ BEGIN
     END IF;	   
 END // 
 
-CREATE PROCEDURE get_maint_schedules (IN total_workers SMALLINT UNSIGNED, IN worker_num SMALLINT UNSIGNED, IN max_rows SMALLINT UNSIGNED, IN min_schedule_id BIGINT UNSIGNED, IN min_test_def_id BIGINT UNSIGNED, IN min_last_modified TIMESTAMP) 
+CREATE PROCEDURE get_maint_schedules (IN total_workers SMALLINT UNSIGNED, IN worker_num SMALLINT UNSIGNED, IN max_rows SMALLINT UNSIGNED, IN max_last_modified TIMESTAMP, IN min_schedule_id BIGINT UNSIGNED, IN min_test_def_id BIGINT UNSIGNED, IN min_last_modified TIMESTAMP) 
 BEGIN
 	IF min_schedule_id IS NOT NULL AND min_test_def_id IS NOT NULL THEN
 	    IF min_last_modified IS NOT NULL THEN
@@ -539,6 +607,7 @@ BEGIN
 		              (schedule_id > min_schedule_id OR
 		              schedule_id = min_schedule_id AND test_definition_id > min_test_def_id) AND
 		              last_modified >= min_last_modified AND
+		              last_modified < max_last_modified AND
 		              is_maintenance = true
 		        ORDER BY schedule_id ASC, test_definition_id ASC
 		        LIMIT max_rows;
@@ -548,6 +617,7 @@ BEGIN
 		        WHERE test_definition_id % total_workers = worker_num AND
 		              (schedule_id > min_schedule_id OR
 		              schedule_id = min_schedule_id AND test_definition_id > min_test_def_id) AND
+		              last_modified < max_last_modified AND
 		              deleted = false AND
 		              active = true AND
 		              is_maintenance = true
@@ -560,6 +630,7 @@ BEGIN
 		        FROM test_definition_schedule_vw 
 		        WHERE test_definition_id % total_workers = worker_num AND
 		              last_modified >= min_last_modified AND
+		              last_modified < max_last_modified AND
 		              is_maintenance = true
 		        ORDER BY schedule_id ASC, test_definition_id ASC
 		        LIMIT max_rows;
@@ -567,6 +638,7 @@ BEGIN
 		    SELECT * 
 		        FROM test_definition_schedule_vw 
 		        WHERE test_definition_id % total_workers = worker_num AND
+		              last_modified < max_last_modified AND
 		              deleted = false AND
 		              active = true AND
 		              is_maintenance = true

@@ -61,7 +61,7 @@ RUXIT.portal = (function () {
 					if ($("#schedule-table-body tr").length === 0) {
 						tBody = $("#schedule-table-body");
 						tr = $("<tr>");
-						tr.append("<td colspan=2>You currently have no schedules defined.</td>");
+						tr.append("<td colspan=2 style=\"width:480px\">You currently have no schedules defined.</td>");
 						tBody.append(tr);
 					}
 				} else {
@@ -98,11 +98,11 @@ RUXIT.portal = (function () {
 		var tr, td, count, max, record, row, editLink, instantTestLink, deleteLink, suspendLink;
 		if (json.status !== 200) {
 			tr = $("<tr>");
-			tr.append("<td colspan=2>An error occurred while attempting to retrieve your schedules.</td>");
+			tr.append("<td colspan=2 style=\"width:480px\">An error occurred while attempting to retrieve your schedules.</td>");
 			tBody.append(tr);
 		} else if (json.data.length === 0) {
 			tr = $("<tr>");
-			tr.append("<td colspan=2>You currently have no schedules defined.</td>");
+			tr.append("<td colspan=2 style=\"width:480px\">You currently have no schedules defined.</td>");
 			tBody.append(tr);
 		} else {
 			max = json.data.length;
@@ -113,7 +113,10 @@ RUXIT.portal = (function () {
 				
 				tr.attr("id", row);
                 // Schedule
-				tr.append($("<td>").append(record.name));
+				td = $("<td>");
+				td.addClass("table-label");
+				td.append(record.name);
+				tr.append(td);
 				
 				// Actions
 				td = $("<td>");

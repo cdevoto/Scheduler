@@ -18,7 +18,7 @@ import com.compuware.ruxit.synthetic.scheduler.core.dao.ScheduleDao;
 import com.compuware.ruxit.synthetic.scheduler.core.dao.TestPlanDao;
 import com.compuware.ruxit.synthetic.scheduler.core.dao.model.MaintScheduleView;
 import com.compuware.ruxit.synthetic.scheduler.core.dao.model.TestPlanView;
-import com.compuware.ruxit.synthetic.scheduler.recur.scheduling.util.DateFormatUtil;
+import com.compuware.ruxit.synthetic.scheduler.core.util.DateFormatUtil;
 
 public class PollingEventManager implements Runnable, EventManager {
 	private static Logger log = LoggerFactory.getLogger(PollingEventManager.class);
@@ -66,15 +66,15 @@ public class PollingEventManager implements Runnable, EventManager {
 	public void run() {
 		long minLastModified = LastPollTime.get();
 		log.info(String.format("Polling the scheduling repository for any changes made since %s.", DateFormatUtil.format(new Date(minLastModified))));
-		LastPollTime.snapshot();
-		pollTestPlans(minLastModified);
-		pollMaintSchedules(minLastModified);
+		long maxLastModified = LastPollTime.snapshot();
+		pollTestPlans(minLastModified, maxLastModified);
+		pollMaintSchedules(minLastModified, maxLastModified);
 	}
 
-	private void pollMaintSchedules(long minLastModified) {
+	private void pollMaintSchedules(long minLastModified, long maxLastModified) {
 		Map<Long, MaintScheduleView> maintSchedules = new HashMap<>();
 		int totalChanges = 0;
-		List<MaintScheduleView> schedules = scheduleDao.getMaintenanceSchedules(schedulerConfig.getTotalWorkers(), schedulerConfig.getWorkerNumber(), maxRows, minLastModified);
+		List<MaintScheduleView> schedules = scheduleDao.getMaintenanceSchedules(schedulerConfig.getTotalWorkers(), schedulerConfig.getWorkerNumber(), maxRows, maxLastModified, minLastModified);
 		while (true) {
 			totalChanges += schedules.size();
 			for (MaintScheduleView schedule : schedules) {
@@ -91,7 +91,7 @@ public class PollingEventManager implements Runnable, EventManager {
 				MaintScheduleView last = schedules.get(maxRows - 1);
 				long minScheduleId = last.getScheduleId();
 				long minTestDefId = last.getTestDefinitionIds().get(0);
-				schedules = scheduleDao.getMaintenanceSchedules(schedulerConfig.getTotalWorkers(), schedulerConfig.getWorkerNumber(), maxRows, minScheduleId, minTestDefId, minLastModified);
+				schedules = scheduleDao.getMaintenanceSchedules(schedulerConfig.getTotalWorkers(), schedulerConfig.getWorkerNumber(), maxRows, maxLastModified, minScheduleId, minTestDefId, minLastModified);
 			} else {
 				break;
 			}
@@ -109,9 +109,9 @@ public class PollingEventManager implements Runnable, EventManager {
 		}
 	}
 
-	private void pollTestPlans(long minLastModified) {
+	private void pollTestPlans(long minLastModified, long maxLastModified) {
 		int totalChanges = 0;
-		List<TestPlanView> testPlans = testPlanDao.get(schedulerConfig.getTotalWorkers(), schedulerConfig.getWorkerNumber(), maxRows, minLastModified);
+		List<TestPlanView> testPlans = testPlanDao.get(schedulerConfig.getTotalWorkers(), schedulerConfig.getWorkerNumber(), maxRows, maxLastModified, minLastModified);
 		while (true) {
 			totalChanges += testPlans.size();
 			for (TestPlanView testPlan : testPlans) {
@@ -121,7 +121,7 @@ public class PollingEventManager implements Runnable, EventManager {
 				TestPlanView last = testPlans.get(maxRows - 1);
 				long minTestDefId = last.getTestDefinitionId();
 				long minTestPlanId = last.getId();
-				testPlans = testPlanDao.get(schedulerConfig.getTotalWorkers(), schedulerConfig.getWorkerNumber(), maxRows, minTestDefId, minTestPlanId, minLastModified);
+				testPlans = testPlanDao.get(schedulerConfig.getTotalWorkers(), schedulerConfig.getWorkerNumber(), maxRows, maxLastModified, minTestDefId, minTestPlanId, minLastModified);
 			} else {
 				break;
 			}

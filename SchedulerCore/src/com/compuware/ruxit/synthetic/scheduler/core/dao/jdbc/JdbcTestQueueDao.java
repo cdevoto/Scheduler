@@ -13,8 +13,11 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
@@ -28,11 +31,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.compuware.ruxit.synthetic.scheduler.core.dao.TestQueueDao;
 import com.compuware.ruxit.synthetic.scheduler.core.dao.model.Test;
-import com.compuware.ruxit.synthetic.scheduler.core.dao.model.TestView;
 import com.compuware.ruxit.synthetic.scheduler.core.dao.model.Test.CancelledStatus;
+import com.compuware.ruxit.synthetic.scheduler.core.dao.model.TestView;
+import com.compuware.ruxit.synthetic.scheduler.core.util.DateFormatUtil;
 
 @Repository
 public class JdbcTestQueueDao implements TestQueueDao {
+	Logger log = LoggerFactory.getLogger(JdbcTestQueueDao.class);
 
 	private JdbcTemplate jdbcTemplate;
 	private PollTestQueue pollTestQueue;
@@ -58,6 +63,46 @@ public class JdbcTestQueueDao implements TestQueueDao {
 		return tests;
 	}
 
+	@Override
+	public void cancelTestsEnqueuedBefore(long enqueuedAt) {
+		Timestamp timestamp = new Timestamp(enqueuedAt);
+		final List<Long> testIds = jdbcTemplate.query("SELECT test_queue_id FROM test_queue WHERE status = ? AND enqueued_at < ?", new TestIdMapper(), Test.Status.ENQUEUED.getValue(), timestamp); 
+        int result = cancelTests(testIds, Test.CancelledStatus.ENQUEUE_EXPIRE.getValue());
+        log.info(String.format("Cancelled %d tests which were enqueued before %s.", result, DateFormatUtil.formatMillis(enqueuedAt)));
+	}
+
+	@Override
+	public void cancelTestsDispatchedBefore(long dispatchedAt) {
+		Timestamp timestamp = new Timestamp(dispatchedAt);
+		List<Long> testIds = jdbcTemplate.query("SELECT test_queue_id FROM test_queue WHERE status = ? AND dispatched_at < ?", new TestIdMapper(), Test.Status.DISPATCHED.getValue(), timestamp); 
+		int result = cancelTests(testIds, Test.CancelledStatus.DISPATCH_EXPIRE.getValue());
+        log.info(String.format("Cancelled %d tests which were dispatched before %s.", result, DateFormatUtil.formatMillis(dispatchedAt)));
+	}
+	
+	private int cancelTests (final List<Long> testIds, final int cancelStatus) {
+		if (testIds.isEmpty()) {
+		    return 0;	
+		}
+        final Timestamp now = new Timestamp(System.currentTimeMillis());
+		int [] result = jdbcTemplate.batchUpdate("UPDATE test_queue SET status = ?, cancelled_at = ?, cancelled_status = ? WHERE test_queue_id = ?",
+				new BatchPreparedStatementSetter() {
+					
+					@Override
+					public void setValues(PreparedStatement ps, int i) throws SQLException {
+						ps.setInt(1, Test.Status.CANCELLED.getValue());
+						ps.setTimestamp(2, now);
+						ps.setInt(3, cancelStatus);
+						ps.setLong(4, testIds.get(i));
+					}
+					
+					@Override
+					public int getBatchSize() {
+						return testIds.size();
+					}
+				}); 
+		return result.length;
+	}
+	
 	@Transactional
 	private TestView poll(long vucId, long supportsF) {
 		final String CANCEL_SQL = "UPDATE test_queue SET status = 3, cancelled_at = ?, cancelled_status = ? WHERE test_queue_id = ?";
@@ -133,6 +178,15 @@ public class JdbcTestQueueDao implements TestQueueDao {
 		}
 	}
 	
+	private static class TestIdMapper implements RowMapper<Long> {
+
+		@Override
+		public Long mapRow(ResultSet rs, int rowNum) throws SQLException {
+			return rs.getLong("test_queue_id");
+		}
+		
+	}
+
 	private static class TestMapper implements RowMapper<Test> {
 
 		@Override

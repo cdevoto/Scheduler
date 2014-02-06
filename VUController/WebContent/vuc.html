@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>RUXIT - VU Controller</title>
 	<meta charset="utf-8">
     <link rel="shortcut icon" type="image/x-icon" href="/vuc/img/favicon.ico" />
 	<link href="css/vuc.css" media="screen,projection" rel="stylesheet" type="text/css">
@@ -11,16 +10,19 @@
     <script type="text/javascript" src="/vuc/js/purl.js"></script>
     <script type="text/javascript" src="/vuc/js/jquery-dateFormat.min.js"></script>
     <script type="text/javascript" src="/vuc/js/vuc.js"></script>
+	<title>VU Controller</title>
 </head>
 <body class="signup responsive">
-    <section class="fullwidth">
+    <section class="fullwidth gray">
             <section class="central">
                 <hgroup class="borderLess">
                     <h1>
                         <span id="vuc-name">VU Controller</span>
                         <input type="submit" value="Play" id="play-pause" tabindex="1" class="button hidden">
                     </h1>
+                    <label>Location-Carrier-Players</label>
                     <h2 id="vuc-lcps" class="hidden"></h2>
+                    <label>Supported Capabilities</label>
                     <h2 id="vuc-supports" class="hidden"></h2>
                 </hgroup>
                 
@@ -32,7 +34,7 @@
                 <section class="flush-block">
                     
                     <input type="checkbox" id="customize-supported" name="customizeSupported" value="1">
-                    <label for="customize-supported" class="inline-label">Customize supported attributes</label>
+                    <label for="customize-supported" class="inline-label">Customize supported capabilities</label>
 	                
 	                <blockquote id="supported-attributes" class="flush-block hidden">
 	                      <input type="checkbox" id="ipv4" name="ipv4" value="1">

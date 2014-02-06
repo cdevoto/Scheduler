@@ -12,13 +12,15 @@ RUXIT.vuc = (function () {
 	var vucId = $.url().param('id');
 	var firstTestRetrieved = false;
 	var poll = false;
-	var maxTestsDisplayed = 20;
+	var maxTestsDisplayed = 15;
 	var testsRetrieved = 0;
 	var pollInterval = 500;
 	var xhr;
 	
 	var init = function () {
+		document.title = "VU Controller " + (vucId !== undefined ? vucId : "(Unknown)");
 		var playPause = $("#play-pause");
+		
 		$("#customize-supported").change(function () {
 			if ($(this).is(':checked')) {
 				$("#supported-attributes").removeClass("hidden");
@@ -60,11 +62,26 @@ RUXIT.vuc = (function () {
 	},
 	
 	abortRequest = function (currentXhr) {
+		removeHilites();
 		setTimeout(function () {
 			if (xhr !== undefined && xhr === currentXhr) {
 				xhr.abort();
 			}
-		}, 2000);
+		}, 1000);
+	},
+	
+	timedRemoveHilites = function (currentXhr) {
+		setTimeout(function () {
+			if (xhr !== undefined && xhr === currentXhr) {
+				removeHilites();
+			}
+		}, 3000);
+	},
+
+	removeHilites = function () {
+		$("#test-table-body tr.hilite").each(function () {
+			$(this).removeClass("hilite");
+		});
 	},
 	
 	getVucDetails = function () {
@@ -90,7 +107,7 @@ RUXIT.vuc = (function () {
         	vucLcps.removeClass("hidden");
         	for (count = 0; count < max; count++) {
         		if (count > 0) {
-        			vucLcps.append("&nbsp;&nbsp;&nbsp;");
+        			vucLcps.append(", ");
         		}
         		vucLcps.append(vuc.lcps[count].name);
         	}
@@ -100,7 +117,7 @@ RUXIT.vuc = (function () {
         if (max > 0) {
         	vucSupports = $("#vuc-supports");
         	vucSupports.removeClass("hidden");
-        	vucSupports.append("Supports: ");
+        	//vucSupports.append("Supports: ");
         	for (count = 0; count < max; count++) {
         		if (count > 0) {
         			vucSupports.append(", ");
@@ -114,9 +131,7 @@ RUXIT.vuc = (function () {
 	
 	pollForTests = function () {
 		if (!poll) {
-			$("#test-table-body tr.hilite").each(function () {
-				$(this).removeClass("hilite");
-			});
+			removeHilites();
 			setTimeout(pollForTests, pollInterval);
 			return;
 		}
@@ -147,14 +162,13 @@ RUXIT.vuc = (function () {
 				setTimeout(pollForTests, pollInterval);
 			}
 		});
+		timedRemoveHilites(xhr);
 	},
 	
 	loadTests = function (json) {
 		var tBody = $("#test-table-body");
 		var tr, count, max, count2, max2, record, row, requires;
-		$("#test-table-body tr.hilite").each(function () {
-			$(this).removeClass("hilite");
-		});
+		removeHilites();
 		if (json.status !== 200) {
 			console.log("An error occurred while attempting to retrieve your tests: status=" + json.status + ", message=" + json.message);
 		} else {

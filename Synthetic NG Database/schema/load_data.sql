@@ -1,17 +1,3 @@
-DELETE FROM location;
-DELETE FROM carrier;
-DELETE FROM player;
-DELETE FROM script_type;
-DELETE FROM script_type_player;
-DELETE FROM ability_flag_level;
-DELETE FROM ability_flag;
-DELETE FROM script_type_ability_flag;
-DELETE FROM timezone;
-DELETE FROM script;
-DELETE FROM lcp;
-DELETE FROM vu_controller;
-DELETE FROM vu_controller_lcp;
-
 INSERT INTO scheduler (scheduler_id, worker_num)
    VALUES (1, 0);
 INSERT INTO scheduler (scheduler_id, worker_num)
@@ -77,11 +63,6 @@ INSERT INTO script_type_player (script_type_player_id, script_type_id, player_id
    VALUES (7, 5, 2);
 INSERT INTO script_type_player (script_type_player_id, script_type_id, player_id)
    VALUES (8, 6, 3);
-
-INSERT INTO ability_flag_level (ability_flag_level_id, description)
-   VALUES (1, 'SCRIPT');
-INSERT INTO ability_flag_level (ability_flag_level_id, description)
-   VALUES (2, 'TEST_DEFINITION');
 
 INSERT INTO ability_flag (ability_flag_id, ability_flag_level_id, mask, description)
    VALUES (1, 2, 1, 'IPv4');
@@ -370,556 +351,556 @@ INSERT INTO lcp (lcp_id, location_id, carrier_id, player_id)
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (1, 3, 3);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (1, 2, 41);
+    VALUES (1, 1, 41);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (2, 2, 42);
+    VALUES (2, 1, 42);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (3, 2, 43);
+    VALUES (3, 1, 43);
 # VUC for Chicago:Sprint:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (2, 3, 3);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (4, 3, 41);
+    VALUES (4, 2, 41);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (5, 3, 42);
+    VALUES (5, 2, 42);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (6, 3, 43);
+    VALUES (6, 2, 43);
 # VUC for Chicago:Sprint:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (3, 3, 3);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (7, 4, 41);
+    VALUES (7, 3, 41);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (8, 4, 42);
+    VALUES (8, 3, 42);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (9, 4, 43);
+    VALUES (9, 3, 43);
 # VUC for Chicago:Sprint:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (4, 2, 3);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (10, 5, 41);
+    VALUES (10, 4, 41);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (11, 5, 42);
+    VALUES (11, 4, 42);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (12, 5, 43);
+    VALUES (12, 4, 43);
 # VUC for Chicago:Level 3:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (5, 1, 3);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (13, 6, 56);
+    VALUES (13, 5, 56);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (14, 6, 57);
+    VALUES (14, 5, 57);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (15, 6, 58);
+    VALUES (15, 5, 58);
 # VUC for Chicago:Level 3:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (6, 2, 3);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (16, 7, 56);
+    VALUES (16, 6, 56);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (17, 7, 57);
+    VALUES (17, 6, 57);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (18, 7, 58);
+    VALUES (18, 6, 58);
 # VUC for Los Angeles:Verizon:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (7, 6, 2);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (19, 8, 29);
+    VALUES (19, 7, 29);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (20, 8, 30);
+    VALUES (20, 7, 30);
 # VUC for Los Angeles:Verizon:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (8, 5, 2);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (21, 9, 29);
+    VALUES (21, 8, 29);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (22, 9, 30);
+    VALUES (22, 8, 30);
 # VUC for Los Angeles:Verizon:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (9, 5, 2);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (23, 10, 29);
+    VALUES (23, 9, 29);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (24, 10, 30);
+    VALUES (24, 9, 30);
 # VUC for Chicago:Level 3:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (10, 6, 3);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (25, 11, 59);
+    VALUES (25, 10, 59);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (26, 11, 60);
+    VALUES (26, 10, 60);
 # VUC for Los Angeles:Sprint:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (11, 2, 2);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (27, 12, 24);
+    VALUES (27, 11, 24);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (28, 12, 25);
+    VALUES (28, 11, 25);
 # VUC for Chicago:Verizon:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (12, 5, 3);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (29, 13, 49);
+    VALUES (29, 12, 49);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (30, 13, 50);
+    VALUES (30, 12, 50);
 # VUC for Chicago:Verizon:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (13, 1, 3);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (31, 14, 49);
+    VALUES (31, 13, 49);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (32, 14, 50);
+    VALUES (32, 13, 50);
 # VUC for Chicago:Verizon:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (14, 1, 3);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (33, 15, 49);
+    VALUES (33, 14, 49);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (34, 15, 50);
+    VALUES (34, 14, 50);
 # VUC for Chicago:AT&T:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (15, 1, 3);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (35, 16, 54);
+    VALUES (35, 15, 54);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (36, 16, 55);
+    VALUES (36, 15, 55);
 # VUC for Chicago:AT&T:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (16, 2, 3);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (37, 17, 54);
+    VALUES (37, 16, 54);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (38, 17, 55);
+    VALUES (38, 16, 55);
 # VUC for Chicago:AT&T:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (17, 1, 3);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (39, 18, 54);
+    VALUES (39, 17, 54);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (40, 18, 55);
+    VALUES (40, 17, 55);
 # VUC for Chicago:AT&T:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (18, 3, 3);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (41, 19, 54);
+    VALUES (41, 18, 54);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (42, 19, 55);
+    VALUES (42, 18, 55);
 # VUC for Chicago:AT&T:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (19, 1, 3);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (43, 20, 54);
+    VALUES (43, 19, 54);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (44, 20, 55);
+    VALUES (44, 19, 55);
 # VUC for New York City:Level 3:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (20, 6, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (45, 21, 19);
+    VALUES (45, 20, 19);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (46, 21, 20);
+    VALUES (46, 20, 20);
 # VUC for New York City:Level 3:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (21, 3, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (47, 22, 19);
+    VALUES (47, 21, 19);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (48, 22, 20);
+    VALUES (48, 21, 20);
 # VUC for New York City:Verizon:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (22, 6, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (49, 23, 9);
+    VALUES (49, 22, 9);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (50, 23, 10);
+    VALUES (50, 22, 10);
 # VUC for New York City:Verizon:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (23, 3, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (51, 24, 9);
+    VALUES (51, 23, 9);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (52, 24, 10);
+    VALUES (52, 23, 10);
 # VUC for New York City:Level 3:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (24, 1, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (53, 25, 16);
+    VALUES (53, 24, 16);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (54, 25, 17);
+    VALUES (54, 24, 17);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (55, 25, 18);
+    VALUES (55, 24, 18);
 # VUC for New York City:Level 3:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (25, 3, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (56, 26, 16);
+    VALUES (56, 25, 16);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (57, 26, 17);
+    VALUES (57, 25, 17);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (58, 26, 18);
+    VALUES (58, 25, 18);
 # VUC for New York City:Level 3:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (26, 2, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (59, 27, 16);
+    VALUES (59, 26, 16);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (60, 27, 17);
+    VALUES (60, 26, 17);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (61, 27, 18);
+    VALUES (61, 26, 18);
 # VUC for New York City:Sprint:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (27, 2, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (62, 28, 1);
+    VALUES (62, 27, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (63, 28, 2);
+    VALUES (63, 27, 2);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (64, 28, 3);
+    VALUES (64, 27, 3);
 # VUC for New York City:Sprint:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (28, 1, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (65, 29, 1);
+    VALUES (65, 28, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (66, 29, 2);
+    VALUES (66, 28, 2);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (67, 29, 3);
+    VALUES (67, 28, 3);
 # VUC for New York City:Sprint:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (29, 1, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (68, 30, 1);
+    VALUES (68, 29, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (69, 30, 2);
+    VALUES (69, 29, 2);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (70, 30, 3);
+    VALUES (70, 29, 3);
 # VUC for New York City:Sprint:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (30, 3, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (71, 31, 1);
+    VALUES (71, 30, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (72, 31, 2);
+    VALUES (72, 30, 2);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (73, 31, 3);
+    VALUES (73, 30, 3);
 # VUC for Detroit:Level 3:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (31, 3, 5);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (74, 32, 67);
+    VALUES (74, 31, 67);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (75, 32, 68);
+    VALUES (75, 31, 68);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (76, 32, 69);
+    VALUES (76, 31, 69);
 # VUC for New York City:Sprint:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (32, 7, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (77, 33, 4);
+    VALUES (77, 32, 4);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (78, 33, 5);
+    VALUES (78, 32, 5);
 # VUC for Los Angeles:AT&T:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (33, 3, 2);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (79, 34, 34);
+    VALUES (79, 33, 34);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (80, 34, 35);
+    VALUES (80, 33, 35);
 # VUC for Boston:AT&T:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (34, 5, 4);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (81, 35, 65);
+    VALUES (81, 34, 65);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (82, 35, 66);
+    VALUES (82, 34, 66);
 # VUC for Los Angeles:Sprint:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (35, 3, 2);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (83, 36, 21);
+    VALUES (83, 35, 21);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (84, 36, 22);
+    VALUES (84, 35, 22);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (85, 36, 23);
+    VALUES (85, 35, 23);
 # VUC for Los Angeles:Sprint:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (36, 3, 2);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (86, 37, 21);
+    VALUES (86, 36, 21);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (87, 37, 22);
+    VALUES (87, 36, 22);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (88, 37, 23);
+    VALUES (88, 36, 23);
 # VUC for Los Angeles:Level 3:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (37, 3, 2);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (89, 38, 36);
+    VALUES (89, 37, 36);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (90, 38, 37);
+    VALUES (90, 37, 37);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (91, 38, 38);
+    VALUES (91, 37, 38);
 # VUC for Chicago:Sprint:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (38, 2, 3);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (92, 39, 44);
+    VALUES (92, 38, 44);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (93, 39, 45);
+    VALUES (93, 38, 45);
 # VUC for Chicago:Sprint:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (39, 1, 3);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (94, 40, 44);
+    VALUES (94, 39, 44);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (95, 40, 45);
+    VALUES (95, 39, 45);
 # VUC for New York City:AT&T:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (40, 1, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (96, 41, 11);
+    VALUES (96, 40, 11);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (97, 41, 12);
+    VALUES (97, 40, 12);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (98, 41, 13);
+    VALUES (98, 40, 13);
 # VUC for New York City:AT&T:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (41, 2, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (99, 42, 11);
+    VALUES (99, 41, 11);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (100, 42, 12);
+    VALUES (100, 41, 12);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (101, 42, 13);
+    VALUES (101, 41, 13);
 # VUC for New York City:AT&T:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (42, 3, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (102, 43, 11);
+    VALUES (102, 42, 11);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (103, 43, 12);
+    VALUES (103, 42, 12);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (104, 43, 13);
+    VALUES (104, 42, 13);
 # VUC for Los Angeles:Verizon:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (43, 2, 2);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (105, 44, 26);
+    VALUES (105, 43, 26);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (106, 44, 27);
+    VALUES (106, 43, 27);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (107, 44, 28);
+    VALUES (107, 43, 28);
 # VUC for Los Angeles:Verizon:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (44, 3, 2);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (108, 45, 26);
+    VALUES (108, 44, 26);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (109, 45, 27);
+    VALUES (109, 44, 27);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (110, 45, 28);
+    VALUES (110, 44, 28);
 # VUC for Los Angeles:Verizon:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (45, 2, 2);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (111, 46, 26);
+    VALUES (111, 45, 26);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (112, 46, 27);
+    VALUES (112, 45, 27);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (113, 46, 28);
+    VALUES (113, 45, 28);
 # VUC for Chicago:AT&T:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (46, 3, 3);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (114, 47, 51);
+    VALUES (114, 46, 51);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (115, 47, 52);
+    VALUES (115, 46, 52);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (116, 47, 53);
+    VALUES (116, 46, 53);
 # VUC for Chicago:AT&T:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (47, 1, 3);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (117, 48, 51);
+    VALUES (117, 47, 51);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (118, 48, 52);
+    VALUES (118, 47, 52);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (119, 48, 53);
+    VALUES (119, 47, 53);
 # VUC for Chicago:AT&T:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (48, 1, 3);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (120, 49, 51);
+    VALUES (120, 48, 51);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (121, 49, 52);
+    VALUES (121, 48, 52);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (122, 49, 53);
+    VALUES (122, 48, 53);
 # VUC for New York City:Verizon:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (49, 2, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (123, 50, 6);
+    VALUES (123, 49, 6);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (124, 50, 7);
+    VALUES (124, 49, 7);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (125, 50, 8);
+    VALUES (125, 49, 8);
 # VUC for New York City:Verizon:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (50, 2, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (126, 51, 6);
+    VALUES (126, 50, 6);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (127, 51, 7);
+    VALUES (127, 50, 7);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (128, 51, 8);
+    VALUES (128, 50, 8);
 # VUC for New York City:Verizon:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (51, 2, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (129, 52, 6);
+    VALUES (129, 51, 6);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (130, 52, 7);
+    VALUES (130, 51, 7);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (131, 52, 8);
+    VALUES (131, 51, 8);
 # VUC for New York City:AT&T:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (52, 1, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (132, 53, 14);
+    VALUES (132, 52, 14);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (133, 53, 15);
+    VALUES (133, 52, 15);
 # VUC for New York City:AT&T:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (53, 1, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (134, 54, 14);
+    VALUES (134, 53, 14);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (135, 54, 15);
+    VALUES (135, 53, 15);
 # VUC for New York City:AT&T:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (54, 6, 1);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (136, 55, 14);
+    VALUES (136, 54, 14);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (137, 55, 15);
+    VALUES (137, 54, 15);
 # VUC for Los Angeles:Level 3:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (55, 5, 2);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (138, 56, 39);
+    VALUES (138, 55, 39);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (139, 56, 40);
+    VALUES (139, 55, 40);
 # VUC for Los Angeles:Level 3:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (56, 3, 2);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (140, 57, 39);
+    VALUES (140, 56, 39);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (141, 57, 40);
+    VALUES (141, 56, 40);
 # VUC for Los Angeles:Level 3:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (57, 7, 2);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (142, 58, 39);
+    VALUES (142, 57, 39);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (143, 58, 40);
+    VALUES (143, 57, 40);
 # VUC for Los Angeles:AT&T:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (58, 3, 2);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (144, 59, 31);
+    VALUES (144, 58, 31);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (145, 59, 32);
+    VALUES (145, 58, 32);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (146, 59, 33);
+    VALUES (146, 58, 33);
 # VUC for Los Angeles:AT&T:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (59, 1, 2);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (147, 60, 31);
+    VALUES (147, 59, 31);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (148, 60, 32);
+    VALUES (148, 59, 32);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (149, 60, 33);
+    VALUES (149, 59, 33);
 # VUC for Los Angeles:AT&T:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (60, 2, 2);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (150, 61, 31);
+    VALUES (150, 60, 31);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (151, 61, 32);
+    VALUES (151, 60, 32);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (152, 61, 33);
+    VALUES (152, 60, 33);
 # VUC for Los Angeles:AT&T:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (61, 1, 2);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (153, 62, 31);
+    VALUES (153, 61, 31);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (154, 62, 32);
+    VALUES (154, 61, 32);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (155, 62, 33);
+    VALUES (155, 61, 33);
 # VUC for Boston:Verizon:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (62, 1, 4);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (156, 63, 63);
+    VALUES (156, 62, 63);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (157, 63, 64);
+    VALUES (157, 62, 64);
 # VUC for Boston:Verizon:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (63, 5, 4);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (158, 64, 63);
+    VALUES (158, 63, 63);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (159, 64, 64);
+    VALUES (159, 63, 64);
 # VUC for Boston:Verizon:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (64, 5, 4);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (160, 65, 63);
+    VALUES (160, 64, 63);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (161, 65, 64);
+    VALUES (161, 64, 64);
 # VUC for Boston:Sprint:Native App
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (65, 2, 4);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (162, 66, 61);
+    VALUES (162, 65, 61);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (163, 66, 62);
+    VALUES (163, 65, 62);
 # VUC for Chicago:Verizon:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (66, 1, 3);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (164, 67, 46);
+    VALUES (164, 66, 46);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (165, 67, 47);
+    VALUES (165, 66, 47);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (166, 67, 48);
+    VALUES (166, 66, 48);
 # VUC for Chicago:Verizon:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (67, 1, 3);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (167, 68, 46);
+    VALUES (167, 67, 46);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (168, 68, 47);
+    VALUES (168, 67, 47);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (169, 68, 48);
+    VALUES (169, 67, 48);
 # VUC for Chicago:Verizon:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (68, 2, 3);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (170, 69, 46);
+    VALUES (170, 68, 46);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (171, 69, 47);
+    VALUES (171, 68, 47);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (172, 69, 48);
+    VALUES (172, 68, 48);
 # VUC for Chicago:Verizon:Browser
 INSERT INTO vu_controller (vuc_id, supports_f, location_id)
     VALUES (69, 2, 3);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (173, 70, 46);
+    VALUES (173, 69, 46);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (174, 70, 47);
+    VALUES (174, 69, 47);
 INSERT INTO vu_controller_lcp (vuc_lcp_id, vuc_id, lcp_id)
-    VALUES (175, 70, 48);
+    VALUES (175, 69, 48);
